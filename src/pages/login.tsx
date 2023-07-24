@@ -6,14 +6,15 @@ import { useState, useEffect } from "react";
 import useAuth from "@/hooks/useAuth";
 // Next
 import Head from "next/head";
-import Script from "next/script";
 // Components
 import Loading from "@/components/Loading";
 import Signup from "@/components/SignUp";
 import Error from "@/components/Error";
 // Icons
-import { FaGithub, FaEyeSlash, FaEye } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+// Bibliotecas
+import { parse } from 'cookie';
 
 const Login = () => {
   const {
@@ -65,16 +66,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Login | Galactic Observatory</title>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (document.cookie && document.cookie.includes('user-auth')) {
-                window.location.href = "/perfil"
-              }
-            `,
-          }}
-        />
+        <title>Login | Galactic Observatory</title>       
       </Head>
 
       {!loading ? (
@@ -191,5 +183,23 @@ const Login = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context:any) {
+  const { req } = context;
+  const cookies = parse(req.headers.cookie || '');
+
+  if (cookies['user-auth']) {
+    return {
+      redirect: {
+        destination: '/perfil',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
 
 export default Login;

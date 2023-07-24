@@ -14,8 +14,8 @@ import ProfileSetupAstronomicalEvents from "@/components/ProfileSetupAstronomica
 import { FcDataConfiguration } from "react-icons/fc";
 import { GiEclipseFlare, GiAlienSkull } from "react-icons/gi";
 import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
-// Ver depois
-import Script from "next/script";
+// Bibliotecas
+import { parse } from "cookie";
 
 const Perfil = () => {
   const { user, signout } = useAuth();
@@ -33,16 +33,7 @@ const Perfil = () => {
   return (
     <S.ProfileContainer>
       <Head>
-        <title>Perfil | Galactic Observatory</title>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (!document.cookie || !document.cookie.includes('user-auth')) {
-                window.location.href = "/login"
-              }
-            `,
-          }}
-        />
+        <title>Perfil | Galactic Observatory</title>    
       </Head>
 
       <S.MenuButton onClick={handleMenuClick} title={isMenuOpen? 'Fechar Menu' : 'Abrir Menu'}>
@@ -82,5 +73,23 @@ const Perfil = () => {
     </S.ProfileContainer>
   );
 };
+
+export async function getServerSideProps(context:any) {
+  const { req } = context;
+  const cookies = parse(req.headers.cookie || '');
+
+  if (!cookies['user-auth']) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
 
 export default Perfil;

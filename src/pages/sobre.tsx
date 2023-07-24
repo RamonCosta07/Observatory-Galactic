@@ -260,7 +260,7 @@ const About = () => {
             </p>
           </S.InfoCard>
           <S.InfoCard>
-            <a href="https://github.com/RamonCosta07" target="_blank">
+            <a href="https://github.com/RamonCosta07/Observatory-Galactic" target="_blank">
               <S.Github title="Acessar repositório do GitHub" />
             </a>
           </S.InfoCard>
