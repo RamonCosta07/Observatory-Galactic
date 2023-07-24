@@ -108,8 +108,9 @@ export const LoginContainer = styled.div<IIsActive>`
       font-size: 21px;
     }
 
-    @media screen and (max-width: 375px) {
-      margin-top: -2rem;
+    @media screen and (max-width: 414px) {
+      margin-top: -1rem;
+      font-size: 21px;
     }
 
     @media screen and (max-width: 360px) {
@@ -142,7 +143,7 @@ export const Tabs = styled.ul`
 
   @media screen and (max-width: 414px) {
     margin-bottom: 1.4rem;
-    margin-top: -10rem;
+    margin-top: -4rem;
   }
 
   @media screen and (max-width: 375px) {
@@ -296,7 +297,7 @@ export const Input = styled.input`
   }
 
   @media screen and (max-width: 360px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding-right: 1.9rem;
   }
 `;
