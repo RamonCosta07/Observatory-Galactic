@@ -1,0 +1,135 @@
+{
+  "2023": {
+    "eclipses": [
+      {
+        "date": "2023-04-20",
+        "type": "solar",
+        "description": "Eclipse solar total"
+      },
+      {
+        "date": "2023-05-05",
+        "type": "lunar",
+        "description": "Eclipse lunar penumbral"
+      },
+      {
+        "date": "2023-10-14",
+        "type": "solar",
+        "description": "Eclipse solar anular"
+      },
+      {
+        "date": "2023-10-28",
+        "type": "lunar",
+        "description": "Eclipse lunar parcial"
+      }
+    ],
+    "moonEvents": [
+      {
+        "date": "2023-01-06",
+        "description": "Microlua (Lua Cheia)"
+      },
+      {
+        "date": "2023-01-21",
+        "description": "Superlua (Lua Nova)"
+      },
+      {
+        "date": "2023-02-05",
+        "description": "Microlua (Lua Cheia)"
+      },
+      {
+        "date": "2023-02-20",
+        "description": "Superlua (Lua Nova)"
+      },
+      {
+        "date": "2023-07-03",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2023-08-01",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2023-08-16",
+        "description": "Microlua (Lua Nova)"
+      },
+      {
+        "date": "2023-08-31",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2023-08-31",
+        "description": "Lua Azul"
+      },
+      {
+        "date": "2023-09-29",
+        "description": "Superlua (Lua Cheia)"
+      }
+    ]
+  },
+
+  "2024": {
+    "eclipses": [
+      {
+        "date": "2024-03-25",
+        "type": "lunar",
+        "description": "Eclipse lunar penumbral"
+      },
+      {
+        "date": "2024-04-08",
+        "type": "solar",
+        "description": "Eclipse solar total"
+      },
+      {
+        "date": "2024-09-18",
+        "type": "lunar",
+        "description": "Eclipse lunar parcial"
+      },
+      {
+        "date": "2024-10-02",
+        "type": "solar",
+        "description": "Eclipse solar anular"
+      }
+    ],
+    "moonEvents": [
+      {
+        "date": "2024-02-09",
+        "description": "Superlua (Lua Nova)"
+      },
+      {
+        "date": "2024-02-24",
+        "description": "Microlua (Lua Cheia)"
+      },
+      {
+        "date": "2024-03-10",
+        "description": "Superlua (Lua Nova)"
+      },
+      {
+        "date": "2024-03-25",
+        "description": "Microlua (Lua Cheia)"
+      },
+      {
+        "date": "2024-04-08",
+        "description": "Superlua (Lua Nova)"
+      },
+      {
+        "date": "2024-08-19",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2024-09-18",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2024-10-02",
+        "description": "Microlua (Lua Nova)"
+      },
+      {
+        "date": "2024-10-17",
+        "description": "Superlua (Lua Cheia)"
+      },
+      {
+        "date": "2024-11-15",
+        "description": "Superlua (Lua Cheia)"
+      }
+    ]
+  }
+}

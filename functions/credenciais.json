@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "galactic-observatory-3e60c",
+  "private_key_id": "40ab3edb2919d794ca13caccc4367328228801a3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/LwN69dx/JaKF\nLw9fYu3HXCAYMCrTWPLL5rSTSB0ZH68E7ziyaAF0BaIIOSmMeuRqiOv0uW8bhsCO\nXR94er3mS/O2aRHSzYWXrGa4mPnt4emXsg4cA1Lii1b0ReUBWPgkUZpdTmbh2v6P\ntmMaUWwp8mSeI/zKBaT4g5ISeR71+CvOL27uGOVP3jLdERljRfRRGrLXoSFez3vL\nTMVAMJ6FBmI8gf0Q0PSBe0Mgs4niviKZOHil+Es6FRatnASZz5OeifZSlYp7MBHj\nU2JXj7HoiGz8uJph0kngSaTUDHymc7lHB2q5vpGrSxrHtDNtVIP8hyJc98UVFJ+F\n4hW2eo7pAgMBAAECggEABDQjbnOzenQ4Y5dKTj2dntGOvxloB6egBw22kLp4MVI6\nBfDAnWOeDJAHJQkkubsGBLWoAoSFReSrnTW8+GgyfrrSzAL5alosgs4+n/Z1IF7k\nRPqcRs9n5iVMLyjORT5QjnPg4gZUSskG6eAHw89ggnea8MM3zrVbED/MWW2iWaQm\nj4oYg/u5wH8MgGsc7p+6LfSrQgwjXpArtXTLZ7NGrAcuuDJkq1Hn9geINRywZCbK\n4cq36D1iUxsl/3yTlDFqzfxmvPGO1RCscmvaDAYWjT+REP99JvWsWLyPIODntY6i\nDVszLqlp18wqIRQn9NCXUIkRG5yFwUgA53wybvmBkQKBgQDgxA7nQ4cYJEr6vtGB\n1mErNQh+c3Bqg0E0Mn1nUl4kYIXFbMpcxqxdrvX/OxsiP9HL1us0F3j5IF7p7+Se\n8LHiK4MdbGkHRDpkH02Vk0P00T1Wol1KGTK8Wj9SaCVe/zPwGNyiMj3bmMDmDNO6\nWaFzVGcUCRo5YVkdind4lYZejQKBgQDZwEiridaZyeaKHIpSfVIT9V6O3isiCUtu\n7MBKegxTiZ0VBBr1b+GQQrXmg4xpnnL+t1u2FdF5c+BCqEu6Fl/H8JeByYTYu8Fb\nfq8y8K96aSvDpLH7dn02C3m8Ocxc/mqrg5L4hUPdHnD9+B3vZmOhbDAbtXaeZAIu\nZdA/Hno4zQKBgDquNQ3frWd6IjEwnFX/eELlh6Ar10+XkPBltiPBd16b7JDMhFCQ\ndfPHd+X4sm7Qpp9HLwTck/LGpsEApnlwcaCQp5yI7yq8f1ogagsA9Z72+cKihSSR\nS5OtJBcJpagVjKPEeeXGpCuux73H34cpW2NWx8qNTdFpPvDdc6+BqiEJAoGAB2tW\nzol2x2yqr0ADsoXUmxt8KlAFljZM3K2ya5c2/k2tDX9DT+ONAvZS7lTDHwIoFue2\nd0DND19UX9EOK3wBrXVUJDbykNPs5aouXAT5ZalZtWPSMKg74fCIKFKr1OtSRR/J\njTA1PL6ByRWAJ50Mff6KsRcAwKrVrDEJ5Gysa20CgYEA3uTTIY2wjjBltWDXgZf1\nkLuD4BbvlBPysuC5PNH8yJ6MSvlzmyprUk5iCrkNx+lmTCKEMi+aKdPUHgi65/RW\nRuQCTOJRQSxJoZDTwCAyXjm+EAqUm63ZZXoNWuaLjGjPzaeZ4hm+Aocy2PZHOtlj\n1tg847UBFsfz/HLiM5S1J8w=\n-----END PRIVATE KEY-----\n",
+  "client_email": "galactic-observatory-3e60c@appspot.gserviceaccount.com",
+  "client_id": "117410049387647403878",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/galactic-observatory-3e60c%40appspot.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
