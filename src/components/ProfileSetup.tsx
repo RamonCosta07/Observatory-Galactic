@@ -6,6 +6,7 @@ import {
   ShowPasswordIcon,
   IconsWrapper,
   HidePasswordIcon,
+  ButtonModal,
 } from "@/styles/LoginStyles";
 // Hooks e Bibliotecas
 import useAuth from "@/hooks/useAuth";
@@ -34,6 +35,7 @@ import { FiEdit, FiX } from "react-icons/fi";
 import { AiFillLock } from "react-icons/ai";
 // Components
 import Error from "./Error";
+import PasswordRecoveryModal from "./PasswordRecoveryModal";
 // Interfaces
 import { IOpenMenuProfile } from "@/interfaces/iComponents/IProfile";
 
@@ -54,6 +56,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
   });
   const inputRef = useRef<HTMLInputElement>(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
@@ -255,6 +258,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
     setIsEditingPassword(false);
   };
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <S.ConfigContainer>
       <h1>Configurações do Perfil</h1>
@@ -349,6 +360,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
         <S.UserInfo>
           <S.UserData>
             {isEditingPassword ? (
+              <>
               <S.EditContainer>
                 <S.HeaderContainerEdit>
                   <h2>Senha Atual</h2>
@@ -445,6 +457,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
                 </InputWrapper>
 
                 <S.Send>
+                <ButtonModal onClick={handleOpenModal} title="Recuperar senha">Esqueceu a senha?</ButtonModal>
                   <Button
                     onClick={handlePasswordSaveClick}
                     title="Salvar alterações"
@@ -453,11 +466,12 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
                   </Button>
                 </S.Send>
               </S.EditContainer>
+              {showModal && <PasswordRecoveryModal onClose={handleCloseModal} />}
+              </>
             ) : (
               <S.UserInformation>
                 <span
                   style={{ cursor: "not-allowed" }}
-                  title="Caso não se recorde de sua senha, poderá recuperá-la na página de login"
                 >
                   Senha:
                   <AiFillLock style={{ marginLeft: ".6rem" }} />

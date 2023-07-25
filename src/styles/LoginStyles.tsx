@@ -143,8 +143,12 @@ export const Tabs = styled.ul`
 
   @media screen and (max-width: 414px) {
     margin-bottom: 1.4rem;
-    margin-top: -4rem;
+    margin-top: -1rem;
   }
+
+  @media screen and (max-width: 390px) {
+      margin-top: -.8rem;
+    }
 
   @media screen and (max-width: 375px) {
     margin-bottom: 1.2rem;
@@ -152,7 +156,7 @@ export const Tabs = styled.ul`
   }
 
   @media screen and (max-width: 360px) {
-    margin-top: -3rem;
+    margin-top: .5rem;
   }
 `;
 
@@ -397,6 +401,57 @@ export const ProviderContainer = styled.div<IProviderContainer>`
     gap: 0.3rem;
   }
 `;
+
+export const ButtonModal = styled.button`
+  margin-top: -2.7rem;
+  margin-bottom: 0.6rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 18px;
+
+  @media screen and (max-width: 1200px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 988px) {
+    margin-top: -2.4rem;
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 17px;
+    margin-bottom: 3.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 4rem;
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: 414px) {
+    margin-bottom: 3rem;
+    font-size: 17px;
+  }
+
+  @media screen and (max-width: 390px) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 360px) {
+    font-size: 17px;
+  }
+
+  &:hover {
+    color: #09d4d4;
+    transform: scale(1.2);;
+  }
+`
 
 export const Button = styled.button`
   background-color: white;

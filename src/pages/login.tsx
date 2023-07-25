@@ -10,11 +10,12 @@ import Head from "next/head";
 import Loading from "@/components/Loading";
 import Signup from "@/components/SignUp";
 import Error from "@/components/Error";
+import PasswordRecoveryModal from "@/components/PasswordRecoveryModal";
 // Icons
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 // Bibliotecas
-import { parse } from 'cookie';
+import { parse } from "cookie";
 
 const Login = () => {
   const {
@@ -28,6 +29,7 @@ const Login = () => {
   } = useAuth();
   const [activeTab, setActiveTab] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [userLogin, setUserLogin] = useState({
     email: "",
     password: "",
@@ -63,10 +65,18 @@ const Login = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
       <Head>
-        <title>Login | Galactic Observatory</title>       
+        <title>Login | Galactic Observatory</title>
       </Head>
 
       {!loading ? (
@@ -93,50 +103,54 @@ const Login = () => {
           </S.Tabs>
 
           {activeTab === "login" && (
-            <S.Form onSubmit={handleSubmit}>
-              <S.FormGroup>
-                <S.Label htmlFor="email">E-mail</S.Label>
-                <S.Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={userLogin.email}
-                  onChange={(e) => handleInputChange(e)}
-                />
-              </S.FormGroup>
-              <S.FormGroup>
-                <S.Label htmlFor="password">Senha</S.Label>
-                <S.InputWrapper>
+            <>
+              <S.Form onSubmit={handleSubmit}>
+                <S.FormGroup>
+                  <S.Label htmlFor="email">E-mail</S.Label>
                   <S.Input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    name="password"
-                    value={userLogin.password}
-                    onChange={handleInputChange}
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={userLogin.email}
+                    onChange={(e) => handleInputChange(e)}
                   />
-                  <S.IconsWrapper>
-                    {showPassword ? (
-                      <S.HidePasswordIcon
-                        onClick={handleTogglePassword}
-                        title="Ocultar senha"
-                      />
-                    ) : (
-                      <S.ShowPasswordIcon
-                        onClick={handleTogglePassword}
-                        title="Exibir senha"
-                      />
-                    )}
-                  </S.IconsWrapper>
-                </S.InputWrapper>
-              </S.FormGroup>
-              {errorSignin && <Error>{errorSignin}</Error>}
-              <S.ButtonContainer>
-                <Button type="submit" title="Acessar sua conta">
-                  Login com E-mail
-                </Button>
-              </S.ButtonContainer>
-            </S.Form>
+                </S.FormGroup>
+                <S.FormGroup>
+                  <S.Label htmlFor="password">Senha</S.Label>
+                  <S.InputWrapper>
+                    <S.Input
+                      type={showPassword ? "text" : "password"}
+                      id="password"
+                      name="password"
+                      value={userLogin.password}
+                      onChange={handleInputChange}
+                    />
+                    <S.IconsWrapper>
+                      {showPassword ? (
+                        <S.HidePasswordIcon
+                          onClick={handleTogglePassword}
+                          title="Ocultar senha"
+                        />
+                      ) : (
+                        <S.ShowPasswordIcon
+                          onClick={handleTogglePassword}
+                          title="Exibir senha"
+                        />
+                      )}
+                    </S.IconsWrapper>
+                  </S.InputWrapper>
+                </S.FormGroup>
+                {errorSignin && <Error>{errorSignin}</Error>}
+                <S.ButtonContainer>
+                  <Button type="submit" title="Acessar sua conta">
+                    Login com E-mail
+                  </Button>
+                </S.ButtonContainer>
+              </S.Form>
+              <S.ButtonModal onClick={handleOpenModal} title="Recuperar senha">Esqueceu a senha?</S.ButtonModal>
+            </>
           )}
+          {showModal && <PasswordRecoveryModal onClose={handleCloseModal} />}
 
           {activeTab === "signup" && (
             <>
@@ -184,14 +198,14 @@ const Login = () => {
   );
 };
 
-export async function getServerSideProps(context:any) {
+export async function getServerSideProps(context: any) {
   const { req } = context;
-  const cookies = parse(req.headers.cookie || '');
+  const cookies = parse(req.headers.cookie || "");
 
-  if (cookies['user-auth']) {
+  if (cookies["user-auth"]) {
     return {
       redirect: {
-        destination: '/perfil',
+        destination: "/perfil",
         permanent: false,
       },
     };
