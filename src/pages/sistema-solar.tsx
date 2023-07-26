@@ -35,10 +35,8 @@ const SistemaSolar = () => {
   );
 };
 
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
+SistemaSolar.getInitialProps = async () => {
+  return {};
+};
 
 export default SistemaSolar;
