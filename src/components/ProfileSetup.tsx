@@ -1,4 +1,5 @@
-/// Styles
+'use cliente';
+// Styles
 import * as S from "@/styles/ProfileSetupStyles";
 import { Button } from "@/styles/ButtonStyles";
 import {
@@ -61,7 +62,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, []);
+  }, [setIsMenuOpen]);
 
   useEffect(() => {
     if (inputRef.current !== null) {

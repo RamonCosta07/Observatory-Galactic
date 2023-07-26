@@ -1,3 +1,4 @@
+'use cliente';
 // Styles
 import * as S from "@/styles/LoginStyles";
 import { Button } from "@/styles/ButtonStyles";

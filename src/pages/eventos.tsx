@@ -14,7 +14,7 @@ const Calendar = dynamic(() => import("@/components/Calendar"), {
   ssr: false, // Desabilita a renderização no lado do servidor
 });
 
-const Eventos = () => {
+const Eventos = ({eventData}:any) => {
   const [eclipses, setEclipses] = useState<Eclipse[]>([]);
   const [lunarEvents, setLunarEvents] = useState<MoonEvent[]>([]);
   const [currentYearSelected, setCurrentYearSelected] =
@@ -22,7 +22,7 @@ const Eventos = () => {
 
   useEffect(() => {
     const yearData =
-      astronomyData[currentYearSelected as keyof typeof astronomyData];
+    eventData[currentYearSelected as keyof typeof astronomyData];
 
     if (yearData) {
       setEclipses(yearData.eclipses || []);
@@ -54,5 +54,15 @@ const Eventos = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const eventData = astronomyData;
+
+  return {
+    props: {
+      eventData,
+    },
+  };
+}
 
 export default Eventos;

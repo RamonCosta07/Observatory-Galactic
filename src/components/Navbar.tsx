@@ -1,3 +1,4 @@
+'use cliente';
 // Styles
 import * as S from "@/styles/NavbarStyles";
 // Next

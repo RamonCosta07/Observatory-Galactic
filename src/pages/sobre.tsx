@@ -96,7 +96,11 @@ const About = () => {
                 eventos astronômicos
               </li>
               <li>React Icons: Utilizada para exibição dos ícones do site</li>
-              <li>React Responsive: Usado para verificar dinamicamente o tamanho da tela para definir comportamentos especificos dos gráficos e planetas 3D, na hora de torná-los responsivos</li>
+              <li>
+                React Responsive: Usado para verificar dinamicamente o tamanho
+                da tela para definir comportamentos especificos dos gráficos e
+                planetas 3D, na hora de torná-los responsivos
+              </li>
               <li>
                 Three: Biblioteca para criação de gráficos e animações 3D dos
                 planetas nas páginas Home e Sistema Solar
@@ -107,12 +111,12 @@ const About = () => {
             </ul>
           </S.InfoCardUl>
           <h2>
-            API's <BsStars />
+            API&apos;s <BsStars />
           </h2>
           <S.InfoCard>
             <p>
-              Por fim, foi utilizada a API da NASA "Astronomy Picture of the
-              Day" &#40;APOD&#41; para trazer informações aleatórias sobre o
+              Por fim, foi utilizada a API da NASA &quot;Astronomy Picture of the
+              Day&quot; &#40;APOD&#41; para trazer informações aleatórias sobre o
               universo, trazendo consigo uma imagem por dia.
             </p>
           </S.InfoCard>
@@ -260,7 +264,10 @@ const About = () => {
             </p>
           </S.InfoCard>
           <S.InfoCard>
-            <a href="https://github.com/RamonCosta07/Observatory-Galactic" target="_blank">
+            <a
+              href="https://github.com/RamonCosta07/Observatory-Galactic"
+              target="_blank"
+            >
               <S.Github title="Acessar repositório do GitHub" />
             </a>
           </S.InfoCard>

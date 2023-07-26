@@ -13,96 +13,97 @@ import ImageOpenModal from "@/components/ImageOpenModal";
 // Next
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Image from "next/image";
 // Icons
 import { AiOutlineArrowRight } from "react-icons/ai";
 // Interfaces
-import { ApodData } from "@/interfaces/iPages/ICuriosity";
+import { IApodData, ICuriositiesProps } from "@/interfaces/iPages/ICuriosity";
 
-const Curiosities = (): JSX.Element => {
+const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
   const apiKey = process.env.NEXT_PUBLIC_API_KEY_NASA;
-  const [apodData, setApodData] = useState<ApodData | null>(null);
+  const [apodData, setApodData] = useState<IApodData | null>(initialApodData);
   const [error, setError] = useState<string>("");
   const [notFound, setNotFound] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
-  const [newCuriosity, setNewCuriosity] = useState(false);
+  const [newCuriosity, setNewCuriosity] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [firstCall, setFirstCall] = useState(1);
   const [expandedImageUrl, setExpandedImageUrl] = useState("");
   const router = useRouter();
-  
-   useEffect(() => {
-    setLoading(true);
-    setNotFound(false);
+  const currentDate = new Date().toISOString().split("T")[0];
 
-    const getAPOD = async (date: string) => {
-      const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
-      console.log('Oi');
-      try {
-        setError("");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        const response = await axios.get<ApodData>(url);
-        const translatedTitle = await translate(response.data.title, {
-          from: "en",
-          to: "pt",
-        });
-        const translatedExplanation = await translate(
-          response.data.explanation,
-          { from: "en", to: "pt" }
-        );
-        setApodData({
-          ...response.data,
-          title: translatedTitle,
-          explanation: translatedExplanation,
-        });
-        setLoading(false);
-        setNotFound(false);
-      } catch (error: any) {
-        setError(error.message);
+  const fetchData = async (date: string) => {
+    const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
+
+    try {
+      setError("");
+      setLoading(true);
+      setNotFound(false);
+
+      const response = await axios.get<IApodData>(url);
+      const translatedTitle = await translate(response.data.title, {
+        from: "en",
+        to: "pt",
+      });
+      const translatedExplanation = await translate(response.data.explanation, {
+        from: "en",
+        to: "pt",
+      });
+      setApodData({
+        ...response.data,
+        title: translatedTitle,
+        explanation: translatedExplanation,
+      });
+      setLoading(false);
+    } catch (error: any) {
+      if (
+        error.message == "Request failed with status code 404" &&
+        firstCall === 1
+      ) {
         setNotFound(true);
-        setLoading(false);
-      }
-    };
-
-    const getRandomDate = () => {
-      const startDate = new Date(1995, 5, 16).getTime();
-      const currentDate = new Date().getTime();
-      const randomDate = Math.floor(
-        Math.random() * (currentDate - startDate + 1) + startDate
-      );
-      return new Date(randomDate).toISOString().split("T")[0];
-    };
-
-    const getAPODWithRetry = async (date: string, retryCount: number = 0) => {
-      if (retryCount > 5) {
-        setNotFound(true);
-        setLoading(false);
         return;
       }
-
-      await getAPOD(date);
-
-      if (notFound && !apodData) {
-        const currentDate = new Date(date);
-        currentDate.setDate(currentDate.getDate() - 1);
-        const newDate = currentDate.toISOString().split("T")[0];
-        getAPODWithRetry(newDate, retryCount + 1);
-      } else {
-        setFirstCall(1);
-      }
-    };
-
-    const currentDate = new Date().toISOString().split("T")[0];
-    if (firstCall === 1 && !notFound) {
-      getAPODWithRetry(currentDate);
-    } else if (firstCall === 2) {
-      const randomDate = getRandomDate();
-      getAPOD(randomDate);
+      setError(error.message);
+      console.log(error.message);
+      setLoading(false);
     }
-  }, [newCuriosity, firstCall]);
+  };
+
+  const getRandomDate = () => {
+    const startDate = new Date(1995, 5, 16).getTime();
+    const currentDateSearch = new Date().getTime();
+    const randomDate = Math.floor(
+      Math.random() * (currentDateSearch - startDate + 1) + startDate
+    );
+    return new Date(randomDate).toISOString().split("T")[0];
+  };
+
+  useEffect(() => {
+    if (newCuriosity < 1) {
+      if (!apodData) {
+        fetchData(currentDate);
+      }
+      return;
+    }
+    getRandomDate();
+    const currentSearchDate = getRandomDate();
+    fetchData(currentSearchDate);
+  }, [apiKey, newCuriosity]);
+
+  setTimeout(() => {
+    if (notFound && firstCall === 1) {
+      setNotFound(false);
+      const nextDayObj = new Date(currentDate);
+      nextDayObj.setDate(nextDayObj.getDate() - 2);
+      const nextDayFormatted = nextDayObj.toISOString().split("T")[0];
+      setFirstCall(2);
+      fetchData(nextDayFormatted);
+    }
+  }, 4000);
 
   const handleNewCuriosity = () => {
-    setFirstCall(2);
-    setNewCuriosity((prev) => !prev);
+    setFirstCall(3);
+    setNewCuriosity((prev) => prev + 1);
   };
 
   const handleImageClick = (imageUrl: string) => {
@@ -132,11 +133,11 @@ const Curiosities = (): JSX.Element => {
         <title>Curiosidades | Galactic Observatory</title>
       </Head>
       <S.Container>
-        <h1>
-          Curiosidades Sobre o Universo
-        </h1>
+        <h1>Curiosidades Sobre o Universo</h1>
         {loading ? (
-          <Loading />
+          <S.LoadingContainer>
+            <Loading />
+          </S.LoadingContainer>
         ) : (
           <>
             <S.Card>
@@ -149,16 +150,19 @@ const Curiosities = (): JSX.Element => {
               />
               <S.Explanation>{apodData.explanation}</S.Explanation>
               <S.DateStyles>
-                Data de referência: {" "}
+                Data de referência:{" "}
                 {new Date(apodData.date).toLocaleDateString("pt-BR")}
               </S.DateStyles>
-              <Button onClick={handleNewCuriosity} title="Trazer uma curiosidade de uma data aleatória">
+              <Button
+                onClick={handleNewCuriosity}
+                title="Trazer uma curiosidade de uma data aleatória"
+              >
                 Gerar curiosidades aleatórias
               </Button>
             </S.Card>
             {modalOpen && (
               <ImageOpenModal onClose={() => setModalOpen(false)}>
-                <img src={expandedImageUrl} alt={apodData.title} />
+                <Image src={expandedImageUrl} alt={apodData.title} width={0} />
               </ImageOpenModal>
             )}
           </>
@@ -173,3 +177,38 @@ const Curiosities = (): JSX.Element => {
 };
 
 export default Curiosities;
+
+export async function getServerSideProps() {
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY_NASA;
+  const currentDate = new Date().toISOString().split("T")[0];
+  const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${currentDate}`;
+
+  try {
+    const response = await axios.get<IApodData>(url);
+    const translatedTitle = await translate(response.data.title, {
+      from: "en",
+      to: "pt",
+    });
+    const translatedExplanation = await translate(response.data.explanation, {
+      from: "en",
+      to: "pt",
+    });
+    const apodData = {
+      ...response.data,
+      title: translatedTitle,
+      explanation: translatedExplanation,
+    };
+
+    return {
+      props: {
+        initialApodData: apodData,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        initialApodData: null,
+      },
+    };
+  }
+}

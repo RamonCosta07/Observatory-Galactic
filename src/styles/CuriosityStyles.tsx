@@ -80,6 +80,10 @@ export const Container = styled.div`
   }
 `;
 
+export const LoadingContainer = styled.div`
+  margin: 0 auto;
+`;
+
 export const Card = styled.div`
   width: 750px;
   margin: 0 auto;

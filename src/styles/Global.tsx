@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100vh;
         background-color: #030330;
         color: white;
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Space Mono', monospace;
         overflow-x: hidden !important;
     }
 `;

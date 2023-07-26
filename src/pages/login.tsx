@@ -147,7 +147,7 @@ const Login = () => {
                   </Button>
                 </S.ButtonContainer>
               </S.Form>
-              <S.ButtonModal onClick={handleOpenModal} title="Recuperar senha">Esqueceu a senha?</S.ButtonModal>
+              <S.ButtonModal onClick={handleOpenModal} title="Recuperar senha">Esqueceu sua senha?</S.ButtonModal>
             </>
           )}
           {showModal && <PasswordRecoveryModal onClose={handleCloseModal} />}

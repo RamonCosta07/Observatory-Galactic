@@ -636,7 +636,7 @@ export const Github = styled(FaGithubAlt)`
 export const Footer = styled.footer`
   background-color: #fafa27;
   color: black;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
   font-weight: bold;
   margin-top: -0.9rem;
@@ -644,6 +644,7 @@ export const Footer = styled.footer`
 
   p {
     font-size: 12px;
+    font-family: 'Courier New', Courier, monospace;
     margin-bottom: 0.3rem;
   }
 

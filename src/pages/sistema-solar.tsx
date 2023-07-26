@@ -21,7 +21,7 @@ const SistemaSolar = () => {
     <>
     <Container>
       <Head>
-        <title>Sistema Solar | Galactic Observatory</title>
+          <title>Sistema Solar | Galactic Observatory</title>
       </Head>
       <Planets />
       <S.ButtonContainer>

@@ -1,3 +1,4 @@
+'use cliente';
 // Styles
 import * as S from "@/styles/PasswordRecoveryModalStyles";
 // Hooks
@@ -11,8 +12,10 @@ import Loading from "./Loading";
 import { auth, db } from "@/services/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { sendPasswordResetEmail } from "firebase/auth";
+// Interfaces
+import { IPasswordRecoveryModal } from "@/interfaces/iComponents/IPasswordRecoveryModal";
 
-const PasswordRecoveryModal = ({ onClose }: any) => {
+const PasswordRecoveryModal = ({ onClose }: IPasswordRecoveryModal) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorRecovery, setErrorRecovery] = useState("");
@@ -24,7 +27,7 @@ const PasswordRecoveryModal = ({ onClose }: any) => {
     }
   }, []);
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     setErrorRecovery("");
   };

@@ -1,3 +1,4 @@
+'use cliente';
 // Styles
 import * as S from "@/styles/DeleteAccountStyles";
 import { ConfigContainer } from "@/styles/ProfileSetupStyles";
