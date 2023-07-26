@@ -35,4 +35,10 @@ const SistemaSolar = () => {
   );
 };
 
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
 export default SistemaSolar;
