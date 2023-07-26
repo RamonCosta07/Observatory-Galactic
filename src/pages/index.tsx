@@ -10,7 +10,7 @@ import SolarSystem from "@/components/SolarSystem";
 // Icons
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-export default function Home() {
+export function Home() {
   const [showHeader, setShowHeader] = useState(false);
   const router = useRouter();
 
@@ -56,3 +56,11 @@ export default function Home() {
     </S.HomeContainer>
   );
 }
+
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
+
+export default Home;
