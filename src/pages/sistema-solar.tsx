@@ -2,13 +2,14 @@
 import { Container } from "@/styles/ContainerStyles";
 import { Button } from "@/styles/ButtonStyles";
 import * as S from "@/styles/SistemaSolarStyles";
-// Components
-import Planets from "@/components/Planets";
 // Next
 import Head from "next/head";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 // React Icons
 import { AiOutlineArrowRight } from "react-icons/ai";
+// Components
+const Planets = dynamic(() => import("@/components/Planets"), { ssr: false });
 
 const SistemaSolar = () => {
   const router = useRouter();
