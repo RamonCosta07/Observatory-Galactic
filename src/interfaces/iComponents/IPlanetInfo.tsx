@@ -7,4 +7,5 @@ export interface IPlanetInfo {
   planetNamePt: string;
   description: string;
   colors: string;
+  diameter: number;
 }

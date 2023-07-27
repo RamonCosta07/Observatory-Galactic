@@ -4,8 +4,14 @@ import * as S from "@/styles/PlanetsStyles";
 import PlanetInfo from "./PlanetInfo";
 // JSON
 import data from "@/json/planets-description.json";
+interface IPlanet {
+  name: string;
+  namePt: string;
+  description: string;
+  colors: string;
+}
 
-const Planets = () => {
+const Planets = ({diameter, data}:any) => {
   const planetsToRender = data.planets.slice(0, 8);
   return (
     <S.PlanetsContainer>
@@ -13,13 +19,14 @@ const Planets = () => {
       <S.PlanetsInformation>
         Clique abaixo para ler mais sobre os planetas.
       </S.PlanetsInformation>
-      {planetsToRender.map((planet, index) => (
+      {planetsToRender.map((planet:IPlanet, index:number) => (
         <PlanetInfo
           key={index}
           planetName={planet.name}
           planetNamePt={planet.namePt}
           description={planet.description}
           colors={planet.colors}
+          diameter={diameter}
         />
       ))}
 
@@ -29,6 +36,7 @@ const Planets = () => {
         planetNamePt={data.planets[8].namePt}
         description={data.planets[8].description}
         colors={data.planets[8].colors}
+        diameter={diameter}
       />
 
       <h3>Satélite Natural</h3>
@@ -37,6 +45,7 @@ const Planets = () => {
         planetNamePt={data.planets[9].namePt}
         description={data.planets[9].description}
         colors={data.planets[9].colors}
+        diameter={diameter}
       />
 
       <h3>Estrela Central do Sistema Solar</h3>
@@ -45,6 +54,7 @@ const Planets = () => {
         planetNamePt={data.planets[10].namePt}
         description={data.planets[10].description}
         colors={data.planets[10].colors}
+        diameter={diameter}
       />
     </S.PlanetsContainer>
   );
