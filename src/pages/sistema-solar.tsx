@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 // React Icons
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Planet from "@/components/Planet";
 // Components
 const Planets = dynamic(() => import("@/components/Planets"), { ssr: false });
 
@@ -25,7 +26,8 @@ const SistemaSolar = () => {
       <Head>
           <title>Sistema Solar | Galactic Observatory</title>
       </Head>
-      <Planets />
+        {/* <Planets /> */}
+        <Planet diameter={3} texture={`/mars_texture.jpg`} />
       <S.ButtonContainer>
         <Button onClick={handleNextPage} title="Ir para página de gráficos">
           Ir Para Gráficos <AiOutlineArrowRight />
