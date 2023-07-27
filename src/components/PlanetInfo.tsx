@@ -1,4 +1,4 @@
-'use cliente';
+'use client';
 // Styles
 import * as S from "@/styles/PlanetInfoStyles";
 // Hooks e Bibliotecas
@@ -66,7 +66,7 @@ const PlanetInfo = ({
         <S.Planet3D
           className={selectedplanets[planetName] ? "slide-right" : ""}
         >
-          <Planet diameter={diameter} texture={`/${planetName}_texture.jpg`} />
+          <Planet diameter={3} texture={`/${planetName}_texture.jpg`} />
         </S.Planet3D>
         <h2>{planetNamePt}</h2>
       </S.PlanetContainer>
