@@ -33,14 +33,16 @@ const SistemaSolar = () => {
   const [planetsToRender, setPlanetsToRender] = useState<ISolarSystemProps[] | null>(null);
 
   useEffect(() => {
-    setPlanetsToRender(data.planets
-    .slice(0, 8)
-    .map((planet) => {
-      return {
-        ...planet,
-        texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
-      };
-    }));
+    setTimeout(() => {
+      setPlanetsToRender(data.planets
+        .slice(0, 8)
+        .map((planet) => {
+          return {
+            ...planet,
+            texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
+          };
+        }));
+      }, 3000);
     setLoading(false);
   }, [])
 
@@ -105,7 +107,7 @@ const SistemaSolar = () => {
             </I.PlanetContainer>
           ))}
 
-          <h3>Planeta Anão</h3>
+          {/* <h3>Planeta Anão</h3>
           <PlanetInfo
             planetName={data.planets[8].name}
             planetNamePt={data.planets[8].namePt}
@@ -127,7 +129,7 @@ const SistemaSolar = () => {
             planetNamePt={data.planets[10].namePt}
             description={data.planets[10].description}
             colors={data.planets[10].colors}
-          />
+          /> */}
         </PlanetsContainer>
         <S.ButtonContainer>
           <Button onClick={handleNextPage} title="Ir para página de gráficos">
