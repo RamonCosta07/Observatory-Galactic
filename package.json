@@ -25,6 +25,7 @@
     "firebase-functions": "^4.4.1",
     "js-cookie": "^3.0.5",
     "next": "13.4.6",
+    "next-images": "^1.8.5",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-calendar": "^4.3.0",

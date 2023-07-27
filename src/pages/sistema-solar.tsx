@@ -24,9 +24,14 @@ interface ISolarSystemProps {
   namePt: string;
   description: string;
   colors: string;
+  texture: string; // Adicionando a propriedade texture
 }
 
-const SistemaSolar = ({ planetsToRender }: any) => {
+const SistemaSolar = ({
+  planetsToRender,
+}: {
+  planetsToRender: ISolarSystemProps[];
+}) => {
   const router = useRouter();
 
   const handleNextPage = () => {
@@ -78,7 +83,7 @@ const SistemaSolar = ({ planetsToRender }: any) => {
               <I.Planet3D
                 className={selectedplanets[planet.name] ? "slide-right" : ""}
               >
-                <Planet diameter={3} texture={`/${planet.name}_texture.jpg`} />
+                <Planet diameter={3} texture={planet.texture} />
               </I.Planet3D>
               <h2>{planet.namePt}</h2>
             </I.PlanetContainer>
@@ -120,7 +125,14 @@ const SistemaSolar = ({ planetsToRender }: any) => {
 };
 
 export async function getServerSideProps() {
-  const planetsToRender = data.planets.slice(0, 8);
+  const planetsToRender: ISolarSystemProps[] = data.planets
+    .slice(0, 8)
+    .map((planet) => {
+      return {
+        ...planet,
+        texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
+      };
+    });
 
   return {
     props: {
