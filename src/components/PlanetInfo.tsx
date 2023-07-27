@@ -17,7 +17,6 @@ const PlanetInfo = ({
   planetNamePt,
   description,
   colors,
-  diameter
 }: IPlanetInfo) => {
   const [selectedplanets, setselectedplanets] = useState<Iselectedplanets>({});
 
@@ -27,7 +26,25 @@ const PlanetInfo = ({
       [planet]: !prevselectedplanets[planet],
     }));
   };
-  
+
+  const isDesktopLarge = useMediaQuery({ minWidth: 1200 });
+  const isTablet = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isMobileMini = useMediaQuery({ maxWidth: 380 });
+
+  // Define diferentes diâmetros para cada tamanho de tela
+  let diameter;
+  if (isDesktopLarge) {
+    diameter = 5;
+  } else if (isTablet) {
+    diameter = 4;
+  } else if (isMobile) {
+    diameter = 3;
+  } else if (isMobileMini) {
+    diameter = 2;
+  } else {
+    diameter = 5; // Valor padrão
+  }
 
   return (
     <>

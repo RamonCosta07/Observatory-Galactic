@@ -1,3 +1,4 @@
+'use client';
 // Interfaces
 import { PlanetProps } from "@/interfaces/iComponents/IPlanet";
 // Hooks
