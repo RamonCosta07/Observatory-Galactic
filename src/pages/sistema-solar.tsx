@@ -13,7 +13,7 @@ import Planet from "@/components/Planet";
 import PlanetInfo from "@/components/PlanetInfo";
 import { PlanetsContainer, PlanetsInformation } from "@/styles/PlanetsStyles";
 import data from "@/json/planets-description.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Iselectedplanets } from "@/interfaces/iComponents/IPlanetInfo";
 import * as I from "@/styles/PlanetInfoStyles";
 // Components
@@ -27,12 +27,22 @@ interface ISolarSystemProps {
   texture: string; // Adicionando a propriedade texture
 }
 
-const SistemaSolar = ({
-  planetsToRender,
-}: {
-  planetsToRender: ISolarSystemProps[];
-}) => {
+const SistemaSolar = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [planetsToRender, setPlanetsToRender] = useState<ISolarSystemProps[] | null>(null);
+
+  useEffect(() => {
+    setPlanetsToRender(data.planets
+    .slice(0, 8)
+    .map((planet) => {
+      return {
+        ...planet,
+        texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
+      };
+    }));
+    setLoading(false);
+  }, [])
 
   const handleNextPage = () => {
     router.push("/sistema-solar/2");
@@ -46,6 +56,12 @@ const SistemaSolar = ({
       [planet]: !prevselectedplanets[planet],
     }));
   };
+
+  if (loading) {
+    return (
+    <p>Loading...</p>
+  )
+}
 
   return (
     <>
@@ -61,7 +77,7 @@ const SistemaSolar = ({
             Clique abaixo para ler mais sobre os planetas.
           </PlanetsInformation>
 
-          {planetsToRender.map((planet: ISolarSystemProps, index: number) => (
+          {planetsToRender && planetsToRender.map((planet: ISolarSystemProps, index: number) => (
             <I.PlanetContainer
               onClick={() => handlePlanetClick(planet.name)}
               title={planet.namePt}
@@ -124,21 +140,21 @@ const SistemaSolar = ({
   );
 };
 
-export async function getStaticProps() {
- const planetsToRender: ISolarSystemProps[] = data.planets
-    .slice(0, 8)
-    .map((planet) => {
-      return {
-        ...planet,
-        texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
-      };
-    });
+// export async function getStaticProps() {
+//  const planetsToRender: ISolarSystemProps[] = data.planets
+//     .slice(0, 8)
+//     .map((planet) => {
+//       return {
+//         ...planet,
+//         texture: `/${planet.name}_texture.jpg`, // Obtendo a URL da textura
+//       };
+//     });
 
-  return {
-    props: {
-      planetsToRender,
-    },
-  };
-}
+//   return {
+//     props: {
+//       planetsToRender,
+//     },
+//   };
+// }
 
 export default SistemaSolar;
