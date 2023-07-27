@@ -83,7 +83,7 @@ const SistemaSolar = ({
               <I.Planet3D
                 className={selectedplanets[planet.name] ? "slide-right" : ""}
               >
-                <Planet diameter={3} texture={`/mars_texture.jpg`}/>
+                <Planet diameter={3} texture={planet.texture}/>
               </I.Planet3D>
               <h2>{planet.namePt}</h2>
             </I.PlanetContainer>
@@ -124,8 +124,8 @@ const SistemaSolar = ({
   );
 };
 
-export async function getServerSideProps() {
-  const planetsToRender: ISolarSystemProps[] = data.planets
+export async function getStaticProps() {
+ const planetsToRender: ISolarSystemProps[] = data.planets
     .slice(0, 8)
     .map((planet) => {
       return {
