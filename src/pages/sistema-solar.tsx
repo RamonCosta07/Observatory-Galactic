@@ -73,8 +73,7 @@ const SistemaSolar = () => {
         <Head>
           <title>Sistema Solar | Galactic Observatory</title>
         </Head>
-        {/* <Planets /> */}
-        {/* <Planet diameter={3} texture={`/mars_texture.jpg`} /> */}
+
         {planetsToRender && (
           <PlanetsContainer>
             <h3>Planetas do Sistema Solar</h3>
@@ -84,27 +83,27 @@ const SistemaSolar = () => {
 
             {/* Mercurios */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Mercurios")}
-              title="Mercurios"
+              onClick={() => handlePlanetClick(planetsToRender[0].name)}
+              title={planetsToRender[0].namePt}
               selectedplanet={
-                selectedplanets["Mercurios"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[0].name] === true ? "true" : "false"
               }
               colors="cor"
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Mercurios"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[0].name] === true ? "true" : "false"
                 }
               >
-                <h1>{planetsToRender && planetsToRender[0].name}</h1>
+                <h1>{planetsToRender && planetsToRender[0].namePt}</h1>
                 <p>{planetsToRender && planetsToRender[0].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Mercurios"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[0].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/mercury_texture.jpg`} />
               </I.Planet3D>
-              <h2>Mercurios</h2>
+              <h2>{planetsToRender[0].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Venus */}
