@@ -59,11 +59,11 @@ const SistemaSolar = () => {
     }));
   };
 
-  if (loading) {
-    return (
-    <p>Loading...</p>
-  )
-}
+//   if (loading) {
+//     return (
+//     <p>Loading...</p>
+//   )
+// }
 
   return (
     <>
@@ -101,7 +101,7 @@ const SistemaSolar = () => {
               <I.Planet3D
                 className={selectedplanets[planet.name] ? "slide-right" : ""}
               >
-                <Planet diameter={3} texture={planet.texture}/>
+                <Planet diameter={3} texture={`/mars_texture.jpg`}/>
               </I.Planet3D>
               <h2>{planet.namePt}</h2>
             </I.PlanetContainer>
