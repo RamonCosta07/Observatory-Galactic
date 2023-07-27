@@ -13,6 +13,9 @@ import Planet from "@/components/Planet";
 import PlanetInfo from "@/components/PlanetInfo";
 import { PlanetsContainer, PlanetsInformation } from "@/styles/PlanetsStyles";
 import data from "@/json/planets-description.json";
+import { useState } from "react";
+import { Iselectedplanets } from "@/interfaces/iComponents/IPlanetInfo";
+import * as I from "@/styles/PlanetInfoStyles";
 // Components
 const Planets = dynamic(() => import("@/components/Planets"), { ssr: false });
 
@@ -30,6 +33,15 @@ const SistemaSolar = ({ planetsToRender }: any) => {
     router.push("/sistema-solar/2");
   };
 
+  const [selectedplanets, setselectedplanets] = useState<Iselectedplanets>({});
+
+  const handlePlanetClick = (planet: string) => {
+    setselectedplanets((prevselectedplanets) => ({
+      ...prevselectedplanets,
+      [planet]: !prevselectedplanets[planet],
+    }));
+  };
+
   return (
     <>
       <Container>
@@ -43,14 +55,33 @@ const SistemaSolar = ({ planetsToRender }: any) => {
           <PlanetsInformation>
             Clique abaixo para ler mais sobre os planetas.
           </PlanetsInformation>
+
           {planetsToRender.map((planet: ISolarSystemProps, index: number) => (
-            <PlanetInfo
-              key={index}
-              planetName={planet.name}
-              planetNamePt={planet.namePt}
-              description={planet.description}
+            <I.PlanetContainer
+              onClick={() => handlePlanetClick(planet.name)}
+              title={planet.namePt}
+              selectedplanet={
+                selectedplanets[planet.name] === true ? "true" : "false"
+              }
               colors={planet.colors}
-            />
+              key={index}
+            >
+              <I.PlanetInfo
+                selectedplanet={
+                  selectedplanets[planet.name] === true ? "true" : "false"
+                }
+              >
+                <h1>{planet.namePt}</h1>
+                <p>{planet.description}</p>
+              </I.PlanetInfo>
+
+              <I.Planet3D
+                className={selectedplanets[planet.name] ? "slide-right" : ""}
+              >
+                <Planet diameter={3} texture={`/${planet.name}_texture.jpg`} />
+              </I.Planet3D>
+              <h2>{planet.namePt}</h2>
+            </I.PlanetContainer>
           ))}
 
           <h3>Planeta Anão</h3>
