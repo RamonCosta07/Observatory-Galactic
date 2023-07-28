@@ -176,6 +176,22 @@ export const Explanation = styled.p`
   }
 `;
 
+export const ImageLoad = styled.div`
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .image-container.image-loaded img {
+    display: block;
+  }
+  .image-container:not(.image-loaded) img {
+    display: none;
+  }
+`;
+
 export const Image = styled.img`
   max-width: 500px;
   max-height: 400px;
