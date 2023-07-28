@@ -13,7 +13,7 @@ import ImageOpenModal from "@/components/ImageOpenModal";
 // Next
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 // Icons
 import { AiOutlineArrowRight } from "react-icons/ai";
 // Interfaces
@@ -27,6 +27,7 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
   const [loading, setLoading] = useState(false);
   const [newCuriosity, setNewCuriosity] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [firstCall, setFirstCall] = useState(1);
   const [expandedImageUrl, setExpandedImageUrl] = useState("");
   const router = useRouter();
@@ -111,6 +112,10 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
     setModalOpen(true);
   };
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   const handleAboutPage = () => {
     router.push("/sobre");
   };
@@ -142,12 +147,18 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
           <>
             <S.Card>
               <S.Title>{apodData.title}</S.Title>
-              <S.Image
-                title="Expandir"
-                src={apodData.url}
-                alt={apodData.title}
-                onClick={() => handleImageClick(apodData.url)}
-              />
+              <S.ImageLoad
+                className={`image-container ${
+                  imageLoaded ? "image-loaded" : ""
+                }`}
+              >
+                <S.Image
+                  title="Expandir"
+                  src={apodData.url}
+                  alt={apodData.title}
+                  onClick={() => handleImageClick(apodData.url)}
+                />
+              </S.ImageLoad>
               <S.Explanation>{apodData.explanation}</S.Explanation>
               <S.DateStyles>
                 Data de referência:{" "}
@@ -161,8 +172,14 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
               </Button>
             </S.Card>
             {modalOpen && (
-              <ImageOpenModal onClose={() => setModalOpen(false)}>
-                <Image src={expandedImageUrl} alt={apodData.title} width={0} />
+                <ImageOpenModal onClose={() => setModalOpen(false)}>
+                   {!imageLoaded && <Loading />}
+                <Image
+                  src={expandedImageUrl}
+                  alt={apodData.title}
+                  layout="fill"
+                  objectFit="contain"
+                />
               </ImageOpenModal>
             )}
           </>
