@@ -23,9 +23,9 @@ const SolarSystem: React.FC = () => {
   } else if (isTablet) {
     scale = 1.4;
   } else if (isMobile) {
-    scale = .8;
+    scale = 1;
   } else if (isMobileMini) {
-    scale = .7;
+    scale = 1;
   } else {
     scale = 1.6; // Valor padrão
   }
