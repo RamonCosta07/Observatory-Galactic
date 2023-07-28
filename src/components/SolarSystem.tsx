@@ -2,7 +2,8 @@
 import { CanvasSolarSystem } from "@/styles/SolarSystemStyles";
 // React
 import React, { useEffect, useRef, useState } from "react";
-// Three
+// Bibliotecas
+import { useMediaQuery } from "react-responsive";
 import * as THREE from "three";
 // Components
 import Loading from "./Loading";
@@ -10,6 +11,24 @@ import Loading from "./Loading";
 const SolarSystem: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const isDesktopLarge = useMediaQuery({ minWidth: 1200 });
+  const isTablet = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isMobileMini = useMediaQuery({ maxWidth: 380 });
+
+  // Define diferentes diâmetros para cada tamanho de tela
+  let scale:number;
+  if (isDesktopLarge) {
+    scale = 1.6;
+  } else if (isTablet) {
+    scale = 1.4;
+  } else if (isMobile) {
+    scale = 1.2;
+  } else if (isMobileMini) {
+    scale = 1;
+  } else {
+    scale = 1.6; // Valor padrão
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -25,7 +44,6 @@ const SolarSystem: React.FC = () => {
       const renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x0d0d1a, 0);
-      const scale = 1.6;
 
       // Sol
       const sunGeometry = new THREE.SphereGeometry(1.5 * scale, 32, 32);
