@@ -11,6 +11,7 @@ import Loading from "./Loading";
 const Planet: React.FC<PlanetProps> = ({ diameter, texture }) => {
   const [loading, setLoading] = useState(false);
   const mountRef = useRef<HTMLDivElement>(null);
+  let animationFrameId: number | null = null;
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -38,7 +39,7 @@ const Planet: React.FC<PlanetProps> = ({ diameter, texture }) => {
     camera.position.z = 5;
 
     const animate = () => {
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
       sphere.rotation.y += 0.01;
       renderer.render(scene, camera);
     };
@@ -47,7 +48,17 @@ const Planet: React.FC<PlanetProps> = ({ diameter, texture }) => {
     setLoading(false);
 
     return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId); // Interrompe a animação quando o componente é desmontado
+      }
+
       mountRef.current?.removeChild(renderer.domElement);
+
+      // Libera recursos e limpa referências
+      renderer.dispose();
+      geometry.dispose();
+      material.dispose();
+      scene.remove(sphere);
     };
   }, [diameter, texture]);
 

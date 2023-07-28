@@ -254,6 +254,7 @@ export const DropdownMenu = styled.div`
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 3;
+  border-radius: 5px;
 
   a {
     text-decoration: none;

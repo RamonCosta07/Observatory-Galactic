@@ -100,10 +100,22 @@ const Navbar = () => {
                       </S.DropdownMenuItem>
                     </Link>
 
-                    <Link href="/sistema-solar/2" title="Ir para página Sistema Solar Gráficos">
+                    <Link href="/sistema-solar/2" title="Ir para página de Corpos Celestes">
                       <S.DropdownMenuItem
                         active={
                           router.asPath === "/sistema-solar/2"
+                            ? "true"
+                            : "false"
+                        }
+                      >
+                        * Corpos Celestes
+                      </S.DropdownMenuItem>
+                    </Link>
+
+                    <Link href="/sistema-solar/3" title="Ir para página Sistema Solar Gráficos">
+                      <S.DropdownMenuItem
+                        active={
+                          router.asPath === "/sistema-solar/3"
                             ? "true"
                             : "false"
                         }

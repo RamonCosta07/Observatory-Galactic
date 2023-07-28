@@ -14,12 +14,16 @@ const SistemaSolarGraphics = () => {
         <Head>
           <title>Sistema Solar - Gráficos</title>
         </Head>
-        <h1 style={{ textAlign: "center", cursor: "default", fontSize: "22px" }}>Gráficos Comparativos</h1>
+        <h1
+          style={{ textAlign: "center", cursor: "default", fontSize: "22px" }}
+        >
+          Gráficos Comparativos
+        </h1>
         <PlanetSizeChart />
         <PlanetDistanceSunChart />
         <RotationPeriodChart />
       </Container>
-      <span style={{ opacity: '0' }}>-</span>
+      <span style={{ opacity: "0" }}>-</span>
     </>
   );
 };
@@ -33,6 +37,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
   const { id } = params;
+  if (id !== "3") {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
