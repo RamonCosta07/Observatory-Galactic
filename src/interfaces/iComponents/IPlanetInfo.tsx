@@ -8,3 +8,11 @@ export interface IPlanetInfo {
   description: string;
   colors: string;
 }
+
+export interface ISolarSystemProps {
+  name: string;
+  namePt: string;
+  description: string;
+  colors: string;
+  texture: string;
+}

@@ -4,7 +4,7 @@ export const PlanetsContainer = styled.div`
   text-align: center;
   h3 {
     text-align: center;
-    margin-bottom: .8rem;
+    margin: 1.2rem 0;
     font-size: 24px;
     font-weight: bold;
     color: cyan;
