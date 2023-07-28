@@ -323,7 +323,7 @@ const SistemaSolar = () => {
               <h2>{planetsToRender[7].namePt}</h2>
             </I.PlanetContainer>
 
-            <h3>Planeta Anão</h3>
+            {/* <h3>Planeta Anão</h3>
             <I.PlanetContainer
               onClick={() => handlePlanetClick(planetsToRender[8].name)}
               title={planetsToRender[8].namePt}
@@ -414,7 +414,7 @@ const SistemaSolar = () => {
                 <Planet diameter={3} texture={`/sun_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[10].namePt}</h2>
-            </I.PlanetContainer>
+            </I.PlanetContainer> */}
           </PlanetsContainer>
         )}
 
