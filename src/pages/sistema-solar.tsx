@@ -81,14 +81,14 @@ const SistemaSolar = () => {
               Clique abaixo para ler mais sobre os planetas.
             </PlanetsInformation>
 
-            {/* Mercurios */}
+            {/* Mercurio */}
             <I.PlanetContainer
               onClick={() => handlePlanetClick(planetsToRender[0].name)}
               title={planetsToRender[0].namePt}
               selectedplanet={
                 selectedplanets[planetsToRender[0].name] === true ? "true" : "false"
               }
-              colors="cor"
+              colors={planetsToRender[0].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
@@ -108,184 +108,177 @@ const SistemaSolar = () => {
 
             {/* Venus */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Venus")}
-              title="Venus"
+              onClick={() => handlePlanetClick(planetsToRender[1].name)}
+              title={planetsToRender[1].namePt}
               selectedplanet={
-                selectedplanets["Venus"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[1].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Venus"
+              colors={planetsToRender[1].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Venus"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[1].name] === true ? "true" : "false"
                 }
               >
-                <h1>Venus</h1>
-                <p>Descrição de Venus</p>
+                <h1>{planetsToRender && planetsToRender[1].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[1].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Venus"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[1].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/venus_texture.jpg`} />
               </I.Planet3D>
-              <h2>Venus</h2>
+              <h2>{planetsToRender[1].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Terra */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Terra")}
-              title="Terra"
+              onClick={() => handlePlanetClick(planetsToRender[2].name)}
+              title={planetsToRender[2].namePt}
               selectedplanet={
-                selectedplanets["Terra"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[2].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Terra"
+              colors={planetsToRender[2].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Terra"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[2].name] === true ? "true" : "false"
                 }
               >
-                <h1>Terra</h1>
-                <p>Descrição de Terra</p>
+                <h1>{planetsToRender && planetsToRender[2].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[2].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Terra"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[2].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/earth_texture.jpg`} />
               </I.Planet3D>
-              <h2>Terra</h2>
+              <h2>{planetsToRender[2].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Marte */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Marte")}
-              title="Marte"
+              onClick={() => handlePlanetClick(planetsToRender[3].name)}
+              title={planetsToRender[3].namePt}
               selectedplanet={
-                selectedplanets["Marte"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[3].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Marte"
+              colors={planetsToRender[3].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Marte"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[3].name] === true ? "true" : "false"
                 }
               >
-                <h1>Marte</h1>
-                <p>Descrição de Marte</p>
+                <h1>{planetsToRender && planetsToRender[3].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[3].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Marte"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[3].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/mars_texture.jpg`} />
               </I.Planet3D>
-              <h2>Marte</h2>
+              <h2>{planetsToRender[3].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Júpiter */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Júpiter")}
-              title="Júpiter"
+              onClick={() => handlePlanetClick(planetsToRender[4].name)}
+              title={planetsToRender[4].namePt}
               selectedplanet={
-                selectedplanets["Júpiter"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[4].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Júpiter"
+              colors={planetsToRender[4].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Júpiter"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[4].name] === true ? "true" : "false"
                 }
               >
-                <h1>Júpiter</h1>
-                <p>Descrição de Júpiter</p>
+                <h1>{planetsToRender && planetsToRender[4].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[4].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Júpiter"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[4].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/jupiter_texture.jpg`} />
               </I.Planet3D>
-              <h2>Júpiter</h2>
+              <h2>{planetsToRender[4].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Saturno */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Saturno")}
-              title="Saturno"
+              onClick={() => handlePlanetClick(planetsToRender[5].name)}
+              title={planetsToRender[5].namePt}
               selectedplanet={
-                selectedplanets["Saturno"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[5].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Saturno"
+              colors={planetsToRender[5].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Saturno"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[5].name] === true ? "true" : "false"
                 }
               >
-                <h1>Saturno</h1>
-                <p>Descrição de Saturno</p>
+                <h1>{planetsToRender && planetsToRender[5].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[5].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Saturno"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[5].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/saturn_texture.jpg`} />
               </I.Planet3D>
-              <h2>Saturno</h2>
+              <h2>{planetsToRender[5].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Urano */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Urano")}
-              title="Urano"
+              onClick={() => handlePlanetClick(planetsToRender[6].name)}
+              title={planetsToRender[6].namePt}
               selectedplanet={
-                selectedplanets["Urano"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[6].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Urano"
+              colors={planetsToRender[6].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Urano"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[6].name] === true ? "true" : "false"
                 }
               >
-                <h1>Urano</h1>
-                <p>Descrição de Urano</p>
+                <h1>{planetsToRender && planetsToRender[6].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[6].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Urano"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[6].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/uranus_texture.jpg`} />
               </I.Planet3D>
-              <h2>Urano</h2>
+              <h2>{planetsToRender[6].namePt}</h2>
             </I.PlanetContainer>
 
             {/* Netuno */}
             <I.PlanetContainer
-              onClick={() => handlePlanetClick("Netuno")}
-              title="Netuno"
+              onClick={() => handlePlanetClick(planetsToRender[7].name)}
+              title={planetsToRender[7].namePt}
               selectedplanet={
-                selectedplanets["Netuno"] === true ? "true" : "false"
+                selectedplanets[planetsToRender[7].name] === true ? "true" : "false"
               }
-              colors="cor"
-              key="Netuno"
+              colors={planetsToRender[7].colors}
             >
               <I.PlanetInfo
                 selectedplanet={
-                  selectedplanets["Netuno"] === true ? "true" : "false"
+                  selectedplanets[planetsToRender[7].name] === true ? "true" : "false"
                 }
               >
-                <h1>Netuno</h1>
-                <p>Descrição de Netuno</p>
+                <h1>{planetsToRender && planetsToRender[7].namePt}</h1>
+                <p>{planetsToRender && planetsToRender[7].description}</p>
               </I.PlanetInfo>
               <I.Planet3D
-                className={selectedplanets["Netuno"] ? "slide-right" : ""}
+                className={selectedplanets[planetsToRender[7].name] ? "slide-right" : ""}
               >
                 <Planet diameter={3} texture={`/neptune_texture.jpg`} />
               </I.Planet3D>
-              <h2>Netuno</h2>
+              <h2>{planetsToRender[7].namePt}</h2>
             </I.PlanetContainer>
 
             {/* <h3>Planeta Anão</h3>
