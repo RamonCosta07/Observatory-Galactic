@@ -26,7 +26,7 @@ const SistemaSolarGraphics = () => {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { id: "2" } }],
+    paths: [],
     fallback: false,
   };
 }

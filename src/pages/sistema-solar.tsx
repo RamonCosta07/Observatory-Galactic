@@ -33,7 +33,7 @@ const SistemaSolar = () => {
   useEffect(() => {
     setTimeout(() => {
       setPlanetsToRender(
-        data.planets.slice(0, 11).map((planet) => {
+        data.planets.slice(0, 8).map((planet) => {
           return {
             ...planet,
             texture: `/${planet.name}_texture.jpg`,
@@ -323,104 +323,12 @@ const SistemaSolar = () => {
               <h2>{planetsToRender[7].namePt}</h2>
             </I.PlanetContainer>
 
-            {/* <h3>Planeta Anão</h3>
-            <I.PlanetContainer
-              onClick={() => handlePlanetClick(planetsToRender[8].name)}
-              title={planetsToRender[8].namePt}
-              selectedplanet={
-                selectedplanets[planetsToRender[8].name] === true
-                  ? "true"
-                  : "false"
-              }
-              colors={planetsToRender[8].colors}
-            >
-              <I.PlanetInfo
-                selectedplanet={
-                  selectedplanets[planetsToRender[8].name] === true
-                    ? "true"
-                    : "false"
-                }
-              >
-                <h1>{planetsToRender && planetsToRender[8].namePt}</h1>
-                <p>{planetsToRender && planetsToRender[8].description}</p>
-              </I.PlanetInfo>
-              <I.Planet3D
-                className={
-                  selectedplanets[planetsToRender[8].name] ? "slide-right" : ""
-                }
-              >
-                <Planet diameter={3} texture={`/pluto_texture.jpg`} />
-              </I.Planet3D>
-              <h2>{planetsToRender[8].namePt}</h2>
-            </I.PlanetContainer>
-
-            <h3>Satélite Natural</h3>
-            <I.PlanetContainer
-              onClick={() => handlePlanetClick(planetsToRender[9].name)}
-              title={planetsToRender[9].namePt}
-              selectedplanet={
-                selectedplanets[planetsToRender[9].name] === true
-                  ? "true"
-                  : "false"
-              }
-              colors={planetsToRender[9].colors}
-            >
-              <I.PlanetInfo
-                selectedplanet={
-                  selectedplanets[planetsToRender[9].name] === true
-                    ? "true"
-                    : "false"
-                }
-              >
-                <h1>{planetsToRender && planetsToRender[9].namePt}</h1>
-                <p>{planetsToRender && planetsToRender[9].description}</p>
-              </I.PlanetInfo>
-              <I.Planet3D
-                className={
-                  selectedplanets[planetsToRender[9].name] ? "slide-right" : ""
-                }
-              >
-                <Planet diameter={3} texture={`/moon_texture.jpg`} />
-              </I.Planet3D>
-              <h2>{planetsToRender[9].namePt}</h2>
-            </I.PlanetContainer>
-
-            <h3>Estrela Central do Sistema Solar</h3>
-            <I.PlanetContainer
-              onClick={() => handlePlanetClick(planetsToRender[10].name)}
-              title={planetsToRender[10].namePt}
-              selectedplanet={
-                selectedplanets[planetsToRender[10].name] === true
-                  ? "true"
-                  : "false"
-              }
-              colors={planetsToRender[10].colors}
-            >
-              <I.PlanetInfo
-                selectedplanet={
-                  selectedplanets[planetsToRender[10].name] === true
-                    ? "true"
-                    : "false"
-                }
-              >
-                <h1>{planetsToRender && planetsToRender[10].namePt}</h1>
-                <p>{planetsToRender && planetsToRender[10].description}</p>
-              </I.PlanetInfo>
-              <I.Planet3D
-                className={
-                  selectedplanets[planetsToRender[10].name] ? "slide-right" : ""
-                }
-              >
-                <Planet diameter={3} texture={`/sun_texture.jpg`} />
-              </I.Planet3D>
-              <h2>{planetsToRender[10].namePt}</h2>
-            </I.PlanetContainer> */}
           </PlanetsContainer>
         )}
 
         <S.ButtonContainer>
-          <Button onClick={handleNextPage} title="Ir para página de gráficos">
-            Ir Para Gráficos <AiOutlineArrowRight />
+          <Button onClick={handleNextPage} title="Ir para página de corpos celestes">
+            Ir Para Corpos Celestes <AiOutlineArrowRight />
           </Button>
         </S.ButtonContainer>
       </Container>
