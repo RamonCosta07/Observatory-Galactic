@@ -1,17 +1,36 @@
 'use client';
 // Interfaces
 import { PlanetProps } from "@/interfaces/iComponents/IPlanet";
-// Hooks
+// Hooks e Bibliotecas
 import { useRef, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 // Three
 import * as THREE from "three";
 // Components
 import Loading from "./Loading";
 
-const Planet: React.FC<PlanetProps> = ({ diameter, texture }) => {
+const Planet: React.FC<PlanetProps> = ({ texture }) => {
   const [loading, setLoading] = useState(false);
   const mountRef = useRef<HTMLDivElement>(null);
   let animationFrameId: number | null = null;
+  const isDesktopLarge = useMediaQuery({ minWidth: 1200 });
+  const isTablet = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 600 });
+  const isMobileMini = useMediaQuery({ maxWidth: 380 });
+
+  // Define diferentes diâmetros para cada tamanho de tela
+  let diameter:number;
+  if (isDesktopLarge) {
+    diameter = 5;
+  } else if (isTablet) {
+    diameter = 4;
+  } else if (isMobile) {
+    diameter = 3;
+  } else if (isMobileMini) {
+    diameter = 2;
+  } else {
+    diameter = 5; // Valor padrão
+  }
 
   useEffect(() => {
     if (!mountRef.current) return;

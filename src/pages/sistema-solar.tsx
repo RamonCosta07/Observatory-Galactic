@@ -101,7 +101,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[0].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/mercury_texture.jpg`} />
+                <Planet texture={`/mercury_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[0].namePt}</h2>
             </I.PlanetContainer>
@@ -132,7 +132,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[1].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/venus_texture.jpg`} />
+                <Planet texture={`/venus_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[1].namePt}</h2>
             </I.PlanetContainer>
@@ -163,7 +163,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[2].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/earth_texture.jpg`} />
+                <Planet texture={`/earth_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[2].namePt}</h2>
             </I.PlanetContainer>
@@ -194,7 +194,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[3].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/mars_texture.jpg`} />
+                <Planet texture={`/mars_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[3].namePt}</h2>
             </I.PlanetContainer>
@@ -225,7 +225,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[4].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/jupiter_texture.jpg`} />
+                <Planet texture={`/jupiter_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[4].namePt}</h2>
             </I.PlanetContainer>
@@ -256,7 +256,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[5].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/saturn_texture.jpg`} />
+                <Planet texture={`/saturn_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[5].namePt}</h2>
             </I.PlanetContainer>
@@ -287,7 +287,7 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[6].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/uranus_texture.jpg`} />
+                <Planet texture={`/uranus_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[6].namePt}</h2>
             </I.PlanetContainer>
@@ -318,16 +318,18 @@ const SistemaSolar = () => {
                   selectedplanets[planetsToRender[7].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/neptune_texture.jpg`} />
+                <Planet texture={`/neptune_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[7].namePt}</h2>
             </I.PlanetContainer>
-
           </PlanetsContainer>
         )}
 
         <S.ButtonContainer>
-          <Button onClick={handleNextPage} title="Ir para página de corpos celestes">
+          <Button
+            onClick={handleNextPage}
+            title="Ir para página de corpos celestes"
+          >
             Ir Para Corpos Celestes <AiOutlineArrowRight />
           </Button>
         </S.ButtonContainer>

@@ -95,7 +95,7 @@ const SolarSystemCelestialBodies = () => {
                   selectedplanets[planetsToRender[8].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/pluto_texture.jpg`} />
+                <Planet texture={`/pluto_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[8].namePt}</h2>
             </I.PlanetContainer>
@@ -126,7 +126,7 @@ const SolarSystemCelestialBodies = () => {
                   selectedplanets[planetsToRender[9].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/moon_texture.jpg`} />
+                <Planet texture={`/moon_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[9].namePt}</h2>
             </I.PlanetContainer>
@@ -157,7 +157,7 @@ const SolarSystemCelestialBodies = () => {
                   selectedplanets[planetsToRender[10].name] ? "slide-right" : ""
                 }
               >
-                <Planet diameter={3} texture={`/sun_texture.jpg`} />
+                <Planet texture={`/sun_texture.jpg`} />
               </I.Planet3D>
               <h2>{planetsToRender[10].namePt}</h2>
             </I.PlanetContainer>
