@@ -10,6 +10,7 @@ export const PlanetContainer = styled.div<IPlanetInfo>`
   margin-left: 1rem;
 
   h2 {
+    cursor: pointer;
     font-size: 24px;
     display: ${(props) =>
       props.selectedplanet === "true" ? "none" : "visible"};
