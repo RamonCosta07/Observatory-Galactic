@@ -1,4 +1,5 @@
 // Styles
+import { PlanetsInformation } from "@/styles/PlanetsStyles";
 import * as S from "@/styles/CalendarStyles";
 // Hooks
 import { useState } from "react";
@@ -267,6 +268,9 @@ const Calendar = ({
   return (
     <S.Wrapper>
       <h2>Eventos Astronômicos</h2>
+      <S.GlossaryInformation>
+        <PlanetsInformation>Glossário</PlanetsInformation>
+      </S.GlossaryInformation>
       <GlossaryCalendar />
       <>
         {loading ? (
@@ -276,19 +280,22 @@ const Calendar = ({
             <S.Navigation>
               <S.Button
                 onClick={() => handleYearChange("2023")}
-                  active={currentYear == "2023" ? "true" : "false"}
-                  title="Calendário de 2023"
+                active={currentYear == "2023" ? "true" : "false"}
+                title="Calendário de 2023"
               >
                 2023
               </S.Button>
               <S.Button
                 onClick={() => handleYearChange("2024")}
-                  active={currentYear == "2024" ? "true" : "false"}
-                  title="Calendário de 2024"
+                active={currentYear == "2024" ? "true" : "false"}
+                title="Calendário de 2024"
               >
                 2024
               </S.Button>
             </S.Navigation>
+            <S.GlossaryInformation>
+              <PlanetsInformation>Clique em cima da data do evento desejado para receber um lembrete em seu e-mail na data.</PlanetsInformation>
+            </S.GlossaryInformation>
             <S.CalendarGrid>
               {months.map((month) => {
                 const startDate = new Date(parseInt(currentYear), month, 1);

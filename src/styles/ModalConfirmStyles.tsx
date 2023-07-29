@@ -23,7 +23,6 @@ export const ModalContent = styled.div`
     color: black;
     text-align: center;
     font-style: italic;
-    font-family: "Cabin Sketch", cursive;
     font-size: 18px;
     word-break: break-word;
 

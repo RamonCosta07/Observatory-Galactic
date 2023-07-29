@@ -14,7 +14,15 @@ const SistemaSolarGraphics = () => {
         <Head>
           <title>Sistema Solar - Gráficos</title>
         </Head>
+<<<<<<< Updated upstream
         <h1 style={{ textAlign: "center", cursor: "default", fontSize: "22px" }}>Gráficos Comparativos</h1>
+=======
+        <h1
+          style={{ textAlign: "center", cursor: "default", fontSize: "28px" }}
+        >
+          Gráficos Comparativos
+        </h1>
+>>>>>>> Stashed changes
         <PlanetSizeChart />
         <PlanetDistanceSunChart />
         <RotationPeriodChart />

@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+"use cliente";
+>>>>>>> Stashed changes
 // Styles
 import * as S from "@/styles/NavbarStyles";
 // Next
@@ -49,31 +53,37 @@ const Navbar = () => {
               title="Minimizar Navbar"
             />
             <S.Logo src="/favicon.png" alt="Logo do site" />
-            <S.VideoButton
-              onClick={toggleVideo}
-              title={
-                isVideoActive
-                  ? "Desativar vídeo de fundo"
-                  : "Ativar vídeo de fundo"
-              }
-            >
-              {isVideoActive ? <BsStopFill /> : <BsFillPlayFill />}
-            </S.VideoButton>
+            <S.VideoDirectionRow>
+              {isVideoActive && (
+                <S.VideoButton
+                  onClick={toggleAudio}
+                  title={isAudioOn ? "Desativar som" : "Ativar o som"}
+                >
+                  {isAudioOn ? <FiVolume2 /> : <FiVolumeX />}
+                </S.VideoButton>
+              )}
 
-            {isVideoActive && (
               <S.VideoButton
-                onClick={toggleAudio}
-                title={isAudioOn ? "Desativar som" : "Ativar o som"}
+                onClick={toggleVideo}
+                title={
+                  isVideoActive
+                    ? "Desativar vídeo de fundo"
+                    : "Ativar vídeo de fundo"
+                }
               >
-                {isAudioOn ? <FiVolume2 /> : <FiVolumeX />}
+                {isVideoActive ? <BsStopFill /> : <BsFillPlayFill />}
               </S.VideoButton>
-            )}
+            </S.VideoDirectionRow>
           </S.HeadNavbar>
+
           <S.NavLinks>
             <Link href="/">
-              <S.NavButton active={router.pathname === "/" ? "true" : "false"} title="Ir para página Home" >
+              <S.NavButton
+                active={router.pathname === "/" ? "true" : "false"}
+                title="Ir para página Home"
+              >
                 <FiHome />
-                Home
+                <span>Home</span>
               </S.NavButton>
             </Link>
 
@@ -84,10 +94,13 @@ const Navbar = () => {
             >
               <S.SolarSystemContainer>
                 <FiSun />
-                Sistema Solar
+                <span>Espaço</span>
                 {showDropdown && (
                   <S.DropdownMenu>
-                    <Link href="/sistema-solar" title="Ir para página Sistema Solar">
+                    <Link
+                      href="/sistema-solar"
+                      title="Ir para página Sistema Solar"
+                    >
                       <S.DropdownMenuItem
                         active={
                           router.pathname === "/sistema-solar"
@@ -99,7 +112,14 @@ const Navbar = () => {
                       </S.DropdownMenuItem>
                     </Link>
 
+<<<<<<< Updated upstream
                     <Link href="/sistema-solar/2" title="Ir para página Sistema Solar Gráficos">
+=======
+                    <Link
+                      href="/sistema-solar/2"
+                      title="Ir para página de Corpos Celestes"
+                    >
+>>>>>>> Stashed changes
                       <S.DropdownMenuItem
                         active={
                           router.asPath === "/sistema-solar/2"
@@ -107,6 +127,24 @@ const Navbar = () => {
                             : "false"
                         }
                       >
+<<<<<<< Updated upstream
+=======
+                        * Corpos Celestes
+                      </S.DropdownMenuItem>
+                    </Link>
+
+                    <Link
+                      href="/sistema-solar/3"
+                      title="Ir para página Sistema Solar Gráficos"
+                    >
+                      <S.DropdownMenuItem
+                        active={
+                          router.asPath === "/sistema-solar/3"
+                            ? "true"
+                            : "false"
+                        }
+                      >
+>>>>>>> Stashed changes
                         * Sistema Solar Gráficos
                       </S.DropdownMenuItem>
                     </Link>
@@ -121,7 +159,7 @@ const Navbar = () => {
                 title="Ir para página Eventos"
               >
                 <FiCalendar />
-                Eventos
+                <span>Eventos</span>
               </S.NavButton>
             </Link>
 
@@ -131,21 +169,19 @@ const Navbar = () => {
                 title="Ir para página Curiosidades"
               >
                 <FiInfo />
-                Curiosidades
+                <span>Curiosidades</span>
               </S.NavButton>
             </Link>
 
-              <S.DisplayAbout>
             <Link href="/sobre">
-                <S.NavButton
-                  active={router.pathname === "/sobre" ? "true" : "false"}
-                  title="Ir para página Sobre"
-                >
-                  <BsQuestionCircle />
-                  Sobre
-                </S.NavButton>
+              <S.NavButton
+                active={router.pathname === "/sobre" ? "true" : "false"}
+                title="Ir para página Sobre"
+              >
+                <BsQuestionCircle />
+                <span>Sobre</span>
+              </S.NavButton>
             </Link>
-              </S.DisplayAbout>
 
             {!user ? (
               <Link href="/login">
@@ -154,25 +190,25 @@ const Navbar = () => {
                   title="Ir para página Login"
                 >
                   <FiUser />
-                  Login
+                  <span>Login</span>
                 </S.NavButton>
               </Link>
             ) : (
               <>
                 <Link href="/perfil">
                   <S.NavButton
-                      active={router.pathname === "/perfil" ? "true" : "false"}
-                      title="Ir para página Perfil"
+                    active={router.pathname === "/perfil" ? "true" : "false"}
+                    title="Ir para página Perfil"
                   >
                     <GiHypersonicBolt />
-                    Perfil
+                    <span>Perfil</span>
                   </S.NavButton>
                 </Link>
 
                 <S.Logout onClick={() => signout()}>
                   <S.NavButton active={"false"} title="Deslogar">
                     <FiLogOut />
-                    Sair
+                    <span>Sair</span>
                   </S.NavButton>
                 </S.Logout>
               </>
