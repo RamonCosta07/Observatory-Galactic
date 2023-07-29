@@ -15,7 +15,7 @@ const SistemaSolarGraphics = () => {
           <title>Sistema Solar - Gráficos</title>
         </Head>
         <h1
-          style={{ textAlign: "center", cursor: "default", fontSize: "22px" }}
+          style={{ textAlign: "center", cursor: "default", fontSize: "28px" }}
         >
           Gráficos Comparativos
         </h1>

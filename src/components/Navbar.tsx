@@ -50,6 +50,7 @@ const Navbar = () => {
               title="Minimizar Navbar"
             />
             <S.Logo src="/favicon.png" alt="Logo do site" />
+            <S.VideoDirectionRow>
             <S.VideoButton
               onClick={toggleVideo}
               title={
@@ -69,6 +70,7 @@ const Navbar = () => {
                 {isAudioOn ? <FiVolume2 /> : <FiVolumeX />}
               </S.VideoButton>
             )}
+            </S.VideoDirectionRow>
           </S.HeadNavbar>
           <S.NavLinks>
             <Link href="/">
@@ -85,7 +87,7 @@ const Navbar = () => {
             >
               <S.SolarSystemContainer>
                 <FiSun />
-                Sistema Solar
+                Espaço
                 {showDropdown && (
                   <S.DropdownMenu>
                     <Link href="/sistema-solar" title="Ir para página Sistema Solar">
@@ -148,7 +150,7 @@ const Navbar = () => {
               </S.NavButton>
             </Link>
 
-              <S.DisplayAbout>
+              
             <Link href="/sobre">
                 <S.NavButton
                   active={router.pathname === "/sobre" ? "true" : "false"}
@@ -158,7 +160,7 @@ const Navbar = () => {
                   Sobre
                 </S.NavButton>
             </Link>
-              </S.DisplayAbout>
+          
 
             {!user ? (
               <Link href="/login">

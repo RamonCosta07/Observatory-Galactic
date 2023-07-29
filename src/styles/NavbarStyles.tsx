@@ -25,6 +25,10 @@ export const NavbarOpenIcon = styled(TbLayoutNavbarCollapse)`
   @media screen and (max-width: 600px) {
     font-size: 2rem;
   }
+
+  @media screen and (max-width: 414px) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const NavbarContainer = styled.nav`
@@ -42,6 +46,11 @@ export const NavbarContainer = styled.nav`
 
   @media screen and (max-width: 600px) {
     height: 48px;
+  }
+
+  @media screen and (max-width: 414px) {
+    height: 54px;
+    padding: 0 25px;
   }
 `;
 
@@ -68,7 +77,11 @@ export const HeadNavbar = styled.div`
   }
 
   @media screen and (max-width: 414px) {
-    margin-right: 0.3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 10px 0;
   }
 
   @media screen and (max-width: 390px) {
@@ -135,9 +148,13 @@ export const NavbarCloseIcon = styled(TbLayoutNavbarCollapse)`
     font-size: 1.4rem;
     margin-right: 8px;
   }
+`;
 
-  @media screen and (max-width: 500px) {
-    display: none;
+export const VideoDirectionRow = styled.div`
+  @media screen and (max-width: 414px) {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
   }
 `;
 
@@ -169,7 +186,7 @@ export const VideoButton = styled.button`
   }
 
   @media screen and (max-width: 414px) {
-    font-size: 15px;
+    font-size: 17px;
   }
 `;
 
@@ -182,11 +199,17 @@ export const NavLinks = styled.div`
     }
 
     @media screen and (max-width: 600px) {
-      margin-right: -2.1rem;
+      margin-right: -2rem;
+      gap: 0.7rem;
     }
 
     @media screen and (max-width: 500px) {
-      margin-right: -2.3rem;
+      margin-right: -2.4rem;
+    }
+
+    @media screen and (max-width: 414px) {
+      margin-right: -2.4rem;
+      gap: 0.8rem;
     }
 
     @media screen and (max-width: 390px) {
@@ -210,8 +233,12 @@ export const NavButton = styled.div<IIsActive>`
     margin-right: 5px;
     font-weight: ${(props) => (props.active === "true" ? "bold" : "normal")};
 
+    @media screen and (max-width: 600px) {
+      font-size: 0.8rem;
+    }
+
     @media screen and (max-width: 414px) {
-      display: none;
+      font-size: 1rem;
     }
   }
 
@@ -222,7 +249,7 @@ export const NavButton = styled.div<IIsActive>`
   }
 
   @media screen and (max-width: 1200px) {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   @media screen and (max-width: 998px) {
@@ -234,7 +261,8 @@ export const NavButton = styled.div<IIsActive>`
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 11px;
+    font-size: 12px;
+    flex-direction: column;
   }
 
   @media screen and (max-width: 500px) {
@@ -242,7 +270,17 @@ export const NavButton = styled.div<IIsActive>`
   }
 
   @media screen and (max-width: 414px) {
-    font-size: 12px;
+    font-size: 11px;
+  }
+
+  @media screen and (max-width: 393px) {
+    gap: 5px;
+    font-size: 10.75px;
+  }
+
+  @media screen and (max-width: 360px) {
+    gap: 5px;
+    font-size: 9.9px;
   }
 `;
 
@@ -254,10 +292,13 @@ export const DropdownMenu = styled.div`
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 3;
-  border-radius: 5px;
 
   a {
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    padding-bottom: 2px;
   }
 `;
 
@@ -287,7 +328,8 @@ export const DropdownMenuItem = styled.div<IIsActive>`
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 11px;
+    font-size: 12px;
+    padding: 0 3px;
   }
 
   @media screen and (max-width: 500px) {
@@ -297,16 +339,30 @@ export const DropdownMenuItem = styled.div<IIsActive>`
   @media screen and (max-width: 414px) {
     font-size: 12px;
   }
+
+  @media screen and (max-width: 393px) {
+    font-size: 11px;
+  }
 `;
 
 export const SolarSystemContainer = styled.div`
   display: flex;
+
+  @media screen and (max-width: 998px) {
+    margin-right: -0.8rem;
+  }
+
   @media screen and (max-width: 768px) {
-    margin-right: -1.8rem;
+    margin-right: -1.6rem;
   }
 
   @media screen and (max-width: 600px) {
     margin-right: -2.1rem;
+    flex-direction: column;
+
+    svg {
+      margin: 0 auto;
+    }
   }
 
   @media screen and (max-width: 500px) {
@@ -317,14 +373,8 @@ export const SolarSystemContainer = styled.div`
     margin-right: -2.3rem;
   }
 
-  @media screen and (max-width: 390px) {
-    margin-right: -2.4rem;
-  }
-`;
-
-export const DisplayAbout = styled.div`
-  @media screen and (max-width: 390px) {
-    display: none;
+  @media screen and (max-width: 393px) {
+    gap: 5px;
     margin-right: -2.4rem;
   }
 `;

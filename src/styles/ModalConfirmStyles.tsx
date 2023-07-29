@@ -6,7 +6,7 @@ export const ModalContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .9);
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,6 @@ export const ModalContent = styled.div`
     color: black;
     text-align: center;
     font-style: italic;
-    font-family: "Cabin Sketch", cursive;
     font-size: 18px;
     word-break: break-word;
 

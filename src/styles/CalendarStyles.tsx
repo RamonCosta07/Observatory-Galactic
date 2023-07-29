@@ -13,6 +13,10 @@ export const Wrapper = styled.div`
   cursor: default;
 `;
 
+export const GlossaryInformation = styled.div`
+  margin-top: 1rem;
+`;
+
 export const Navigation = styled.div`
   margin-bottom: 1rem;
 `;
