@@ -240,6 +240,10 @@ export const NavButton = styled.div<IIsActive>`
     @media screen and (max-width: 414px) {
       font-size: 1rem;
     }
+
+    @media screen and (max-width: 393px) {
+      font-size: .9rem;
+    }
   }
 
   &:hover {
@@ -275,12 +279,12 @@ export const NavButton = styled.div<IIsActive>`
 
   @media screen and (max-width: 393px) {
     gap: 5px;
-    font-size: 10.75px;
+    font-size: 10.5px;
   }
 
   @media screen and (max-width: 360px) {
     gap: 5px;
-    font-size: 9.6px;
+    font-size: 9px;
   }
 `;
 
