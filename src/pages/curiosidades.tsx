@@ -112,10 +112,6 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
     setModalOpen(true);
   };
 
-  const handleImageLoad = () => {
-    setImageLoaded(true);
-  };
-
   const handleAboutPage = () => {
     router.push("/sobre");
   };
@@ -172,8 +168,8 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
               </Button>
             </S.Card>
             {modalOpen && (
-                <ImageOpenModal onClose={() => setModalOpen(false)}>
-                   {!imageLoaded && <Loading />}
+              <ImageOpenModal onClose={() => setModalOpen(false)}>
+                {!imageLoaded && <Loading />}
                 <Image
                   src={expandedImageUrl}
                   alt={apodData.title}

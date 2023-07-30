@@ -88,6 +88,11 @@ const About = () => {
                 JS Cookie: Manipulação de cookies para manter usuário logado
               </li>
               <li>
+                NextJS ProgressBar: Usado para gerar uma barra de progresso de
+                carregamento personalizado quando o usuário alterna entre as
+                páginas do site
+              </li>
+              <li>
                 React Apexcharts: Utilizadas para exibição de gráficos do
                 sistema solar
               </li>
@@ -115,9 +120,9 @@ const About = () => {
           </h2>
           <S.InfoCard>
             <p>
-              Por fim, foi utilizada a API da NASA &quot;Astronomy Picture of the
-              Day&quot; &#40;APOD&#41; para trazer informações aleatórias sobre o
-              universo, trazendo consigo uma imagem por dia.
+              Por fim, foi utilizada a API da NASA &quot;Astronomy Picture of
+              the Day&quot; &#40;APOD&#41; para trazer informações aleatórias
+              sobre o universo, trazendo consigo uma imagem por dia.
             </p>
           </S.InfoCard>
           <S.InfoCard>
