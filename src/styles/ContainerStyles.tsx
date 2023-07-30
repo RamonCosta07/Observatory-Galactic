@@ -33,8 +33,8 @@ export const Container = styled.div`
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 29rem;
     margin-top: 5rem;
+    margin-bottom: .5rem;
   }
 
   @media screen and (max-width: 540px) {
