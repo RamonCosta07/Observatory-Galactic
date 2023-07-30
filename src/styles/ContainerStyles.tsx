@@ -37,15 +37,10 @@ export const Container = styled.div`
     margin-bottom: .5rem;
   }
 
-  @media screen and (max-width: 540px) {
-    margin-bottom: 10rem;
-  }
-
   @media screen and (max-width: 500px) {
     width: 82%;
     margin-left: 9%;
     margin-right: 9%;
-    margin-bottom: 0rem;
   }
 
   @media screen and (max-width: 420px) {
@@ -53,27 +48,7 @@ export const Container = styled.div`
     margin-left: 7%;
     margin-right: 7%;
     margin-top: 5rem;
-    margin-bottom: 11.5rem;
-  }
-
-  @media screen and (max-width: 414px) {
-    margin-bottom: 21rem;
-  }
-
-  @media screen and (max-width: 412px) {
-    margin-bottom: 22rem;
-  }
-
-  @media screen and (max-width: 393px) {
-    margin-bottom: 18rem;
-  }
-
-  @media screen and (max-width: 375px) {
-    margin-bottom: 7rem;
-  }
-
-  @media screen and (max-width: 360px) {
-    margin-bottom: 11rem;
+    margin-bottom: .5rem;
   }
 
   h2 {
