@@ -81,7 +81,7 @@ const Login = () => {
 
       {!loading ? (
         <S.LoginContainer active={activeTab === "login" ? "true" : "false"}>
-          <S.Tabs>
+          <S.Tabs active={activeTab === "login" ? "true" : "false"}>
             <S.Tab>
               <S.TabLink
                 active={activeTab === "login" ? "true" : "false"}
@@ -194,6 +194,7 @@ const Login = () => {
       ) : (
         <Loading />
       )}
+      <span style={{ opacity: "0" }}>-</span>
     </>
   );
 };

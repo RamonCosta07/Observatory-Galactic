@@ -98,7 +98,7 @@ const Navbar = () => {
                             : "false"
                         }
                       >
-                        * Sistema Solar
+                        *Sistema Solar
                       </S.DropdownMenuItem>
                     </Link>
 
@@ -110,7 +110,7 @@ const Navbar = () => {
                             : "false"
                         }
                       >
-                        * Corpos Celestes
+                        *Corpos Celestes
                       </S.DropdownMenuItem>
                     </Link>
 
@@ -122,7 +122,7 @@ const Navbar = () => {
                             : "false"
                         }
                       >
-                        * Sistema Solar Gráficos
+                        *Sistema Solar Gráficos
                       </S.DropdownMenuItem>
                     </Link>
                   </S.DropdownMenu>

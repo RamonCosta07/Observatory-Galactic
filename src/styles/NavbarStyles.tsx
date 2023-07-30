@@ -151,10 +151,10 @@ export const NavbarCloseIcon = styled(TbLayoutNavbarCollapse)`
 `;
 
 export const VideoDirectionRow = styled.div`
+  display: flex;
   @media screen and (max-width: 414px) {
-    display: flex;
     flex-direction: row;
-    gap: 0.2rem;
+    gap: 0.1rem;
   }
 `;
 
@@ -280,7 +280,7 @@ export const NavButton = styled.div<IIsActive>`
 
   @media screen and (max-width: 360px) {
     gap: 5px;
-    font-size: 9.9px;
+    font-size: 9.6px;
   }
 `;
 
@@ -291,6 +291,7 @@ export const DropdownMenu = styled.div`
   background-color: #9574ac;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   z-index: 3;
 
   a {

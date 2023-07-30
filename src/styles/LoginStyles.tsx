@@ -13,7 +13,7 @@ export const LoginContainer = styled.div<IIsActive>`
   align-items: center;
   justify-content: center;
   height: 46%;
-  padding: 1rem;
+  padding: 0.5rem;
   padding-left: 1rem;
   margin-left: 28%;
   margin-right: 28%;
@@ -65,11 +65,17 @@ export const LoginContainer = styled.div<IIsActive>`
     margin-right: 17.5%;
   }
 
-  @media screen and (max-width: 375px) {
-    padding: 0.1rem 1.3rem;
+  @media screen and (max-width: 393px) {
     margin-left: 15%;
     margin-right: 15%;
-    height: 51%;
+    height: ${(props) => (props.active === "true" ? "70vh" : "100%")};
+  }
+
+  @media screen and (max-width: 375px) {
+    padding: 0.1rem 1.3rem;
+    margin-left: 14%;
+    margin-right: 14%;
+    height: ${(props) => (props.active === "true" ? "80vh" : "100vh")};
   }
 
   @media screen and (max-width: 360px) {
@@ -90,7 +96,7 @@ export const LoginContainer = styled.div<IIsActive>`
 
     @media screen and (max-width: 998px) {
       margin-bottom: 0.5rem;
-      margin-top: -1.5rem;
+      margin-top: ${(props) => (props.active === "true" ? "1rem" : "-1.5rem")};
       font-size: 26px;
     }
 
@@ -113,6 +119,11 @@ export const LoginContainer = styled.div<IIsActive>`
       font-size: 21px;
     }
 
+    @media screen and (max-width: 393px) {
+      margin-top: -2rem;
+      font-size: 21px;
+    }
+
     @media screen and (max-width: 360px) {
       margin-top: -1.5rem;
       font-size: 20px;
@@ -120,7 +131,7 @@ export const LoginContainer = styled.div<IIsActive>`
   }
 `;
 
-export const Tabs = styled.ul`
+export const Tabs = styled.ul<IIsActive>`
   display: flex;
   list-style: none;
   margin-bottom: 1rem;
@@ -142,21 +153,22 @@ export const Tabs = styled.ul`
   }
 
   @media screen and (max-width: 414px) {
+    margin-top: ${(props) => (props.active === "true" ? ".6rem" : "-5rem")};
     margin-bottom: 1.4rem;
-    margin-top: -1rem;
   }
 
-  @media screen and (max-width: 390px) {
-      margin-top: -.8rem;
-    }
+  @media screen and (max-width: 393px) {
+    margin-top: ${(props) => (props.active === "true" ? "-2rem" : "-2.7rem")};
+    margin-bottom: 1.4rem;
+  }
 
   @media screen and (max-width: 375px) {
-    margin-bottom: 1.2rem;
-    margin-top: 0.5rem;
+    margin-top: ${(props) => (props.active === "true" ? "-3rem" : "-4rem")};
+    margin-bottom: 1.4rem;
   }
 
   @media screen and (max-width: 360px) {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 `;
 
@@ -400,6 +412,10 @@ export const ProviderContainer = styled.div<IProviderContainer>`
   @media screen and (max-width: 500px) {
     gap: 0.3rem;
   }
+
+  @media screen and (max-width: 393px) {
+    margin-bottom: -1rem;
+  }
 `;
 
 export const ButtonModal = styled.button`
@@ -449,9 +465,9 @@ export const ButtonModal = styled.button`
 
   &:hover {
     color: #09d4d4;
-    transform: scale(1.2);;
+    transform: scale(1.2);
   }
-`
+`;
 
 export const Button = styled.button`
   background-color: white;

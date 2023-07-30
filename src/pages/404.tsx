@@ -20,7 +20,7 @@ const NotFound = () => {
           </h1>
           <span>Você viajou para além dos confins do universo...</span>
           <p>&quot;Busquem conhecimento&quot; — Et Bilu.</p>
-          <Link href="/" title="Redirecionar para Home">Ir para página Inicial</Link>
+          <Link href="/" title="Redirecionar para Home">Voltar para página Inicial</Link>
           <Image src="/alien.png" alt="Imagem de alien" width={290} height={290} />
         </S.Container404>
       <span style={{ opacity: "0" }}>-</span>
