@@ -10,7 +10,7 @@ export const HomeContainer = styled.div`
   h1 {
     text-align: center;
     position: absolute;
-    top: 120px;
+    top: 100px;
     margin-left: 450px;
     font-size: 28px;
 
@@ -45,25 +45,27 @@ export const HomeContainer = styled.div`
     }
 
     @media screen and (max-width: 414px) {
-      top: 100px;
-      margin-left: 20px;
-      font-size: 20px;
+      top: 125px;
+      margin-left: 10px;
+      font-size: 19px;
     }
 
-    @media screen and (max-width: 390px) {
-      margin-left: 8px;
+    @media screen and (max-width: 393px) {
+      margin: 0 8px;
+      top: 135px;
     }
 
     @media screen and (max-width: 375px) {
-      top: 80px;
+      top: 90px;
       margin-left: 8px;
       font-size: 19px;
     }
 
     @media screen and (max-width: 360px) {
-      top: 100px;
-      margin-left: 15px;
-      font-size: 18px;
+      top: 120px;
+      margin-left: 0px;
+      margin: 0 auto;
+      font-size: 17.5px;
     }
   }
 
@@ -74,11 +76,11 @@ export const HomeContainer = styled.div`
     display: inline-block;
 
     @media screen and (max-width: 414px) {
-      padding: 0.6rem;
+      padding: 0.4rem;
     }
 
     @media screen and (max-width: 360px) {
-      padding: 0.6rem 0.3rem;
+      padding: 0.5rem;
     }
   }
 `;
@@ -94,8 +96,8 @@ export const SolarSystem = styled.div`
 
 export const ButtonSolarSystem = styled.div`
   position: relative;
-  top: 525px;
-  left: 500px;
+  top: 505px;
+  margin: 0 auto;
   cursor: pointer;
 
   @media screen and (max-width: 1200px) {
@@ -119,29 +121,36 @@ export const ButtonSolarSystem = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    top: 600px;
     left: 150px;
   }
 
   @media screen and (max-width: 414px) {
-    top: 580px;
-    left: 15px;
+    top: 540px;
+    left: 8px;
   }
 
-  @media screen and (max-width: 390px) {
-    left: 2px;
+  @media screen and (max-width: 393px) {
+    top: 530px;
+    margin: 0 auto;
+    left: 0px;
   }
 
   @media screen and (max-width: 375px) {
-    top: 475px;
-    left: 10px;
+    display: inline-block;
+    top: 445px;
+  }
+
+  @media screen and (max-width: 360px) {
+    top: 495px;
   }
 
   p {
+    text-align: center;
     span {
       background-color: rgba(0, 0, 0, 0.4);
       padding: 0.5rem 1rem;
       border-radius: 10px;
+      display: inline-block;
 
       @media screen and (max-width: 1200px) {
         font-size: 22px;
@@ -158,12 +167,17 @@ export const ButtonSolarSystem = styled.div`
       }
 
       @media screen and (max-width: 414px) {
-        font-size: 19px;
+        font-size: 17.5px;
         padding: .5rem;
+      }
+
+      @media screen and (max-width: 393px) {
+        font-size: 16.2px;
       }
 
       @media screen and (max-width: 375px) {
         font-size: 18px;
+        padding: .4rem;
       }
 
       @media screen and (max-width: 360px) {
