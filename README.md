@@ -62,10 +62,11 @@ Para criar o projeto, execute os seguintes comandos:
 No diretório raiz do projeto, crie um arquivo chamado **.env.local** contendo três sessões de variáveis de ambiente:
 
 ### Configuração do Firebase
-* **NEXT_PUBLIC_API_KEY_FIREBASE=(Insira sua API Key do Firebase)**
-* **NEXT_PUBLIC_AUTH_DOMAIN_FIREBASE=(Insira o domínio de autenticação do Firebase)**
-* **NEXT_PUBLIC_PROJECT_ID_FIREBASE=(Insira o ID do seu projeto no Firebase)**
-Certifique-se de criar uma conta no Firebase, obter as credenciais necessárias e habilitar o Firestore criando as coleções "events" e "users". A seguir, adicione as seguintes regras no Firestore:
+```NEXT_PUBLIC_API_KEY_FIREBASE=(Insira sua API Key do Firebase)```  
+```NEXT_PUBLIC_AUTH_DOMAIN_FIREBASE=(Insira o domínio de autenticação do Firebase)```  
+```NEXT_PUBLIC_PROJECT_ID_FIREBASE=(Insira o ID do seu projeto no Firebase)```  
+  
+Certifique-se de criar uma conta no Firebase, obter as credenciais necessárias e habilitar o Firestore criando as coleções "events" e "users". A seguir, adicione as seguintes regras no Firestore:  
 ```rules_version = '2';  
 service cloud.firestore {  
   match /databases/{database}/documents {  
@@ -82,19 +83,22 @@ service cloud.firestore {
 }
 ```  
  ### Configuração da API da NASA
-* **NEXT_PUBLIC_API_KEY_NASA=(Insira sua API Key da NASA)**
+```NEXT_PUBLIC_API_KEY_NASA=(Insira sua API Key da NASA)```  
 Acesse o site da [API da NASA](https://api.nasa.gov/) para obter sua chave de API.
 
 ### Configuração do EmailJS
-* **NEXT_PUBLIC_EMAIL_SERVICE_ID=(Insira o ID do serviço de e-mail no EmailJS)**
-* **NEXT_PUBLIC_EMAIL_TEMPLATE_ID=(Insira o ID do template de e-mail no EmailJS)**
-* **NEXT_PUBLIC_EMAIL_USER_ID=(Insira o ID do usuário no EmailJS)**
+```NEXT_PUBLIC_EMAIL_SERVICE_ID=(Insira o ID do serviço de e-mail no EmailJS)```  
+```NEXT_PUBLIC_EMAIL_TEMPLATE_ID=(Insira o ID do template de e-mail no EmailJS)```  
+```NEXT_PUBLIC_EMAIL_USER_ID=(Insira o ID do usuário no EmailJS)```  
+  
 Realize o cadastro no serviço do [EmailJS](https://www.emailjs.com/) para obter os dados necessários.
 
 ## Cloud Function
-O projeto também utiliza o Firebase Functions. Uma vez que você enviar a pasta "functions" para o Firebase e executar a função externamente pela cloud function, essa pasta não é mais necessária em seu projeto. Certifique-se de criar um arquivo **env** dentro da pasta "functions", com as seguintes variáveis:
-* **USER_EMAIL=(Seu e-mail para a cloud function)**
-* **PASSWORD_APP=(Sua senha para a cloud function)**  
-Mantenha a identação no arquivo **index.ts**, pois, do contrário, a cloud function não será enviada para o Firebase. Para enviar a function para a cloud, execute o comando: **firebase deploy --only functions**.  
+O projeto também utiliza o Firebase Functions. Uma vez que você enviar a pasta "functions" para o Firebase e executar a função externamente pela cloud function, essa pasta não é mais necessária em seu projeto. Certifique-se de criar um arquivo **env** dentro da pasta "functions", com as seguintes variáveis:  
+```USER_EMAIL=(Seu e-mail para a cloud function)```  
+```PASSWORD_APP=(Sua senha para a cloud function)```  
+  
+Mantenha a identação no arquivo **index.ts**, pois, do contrário, a cloud function não será enviada para o Firebase. Para enviar a function para a cloud, execute o comando:  
+```firebase deploy --only functions```
   
 Não esqueça de adicionar o domínio do seu site nos domínios permitidos do Firebase para que seja possível efetuar login do usuário utilizando o Firebase e Firestore.
