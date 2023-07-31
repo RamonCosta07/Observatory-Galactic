@@ -135,11 +135,13 @@ export const Send = styled.div`
   justify-content: flex-end;
   gap: 1.2rem;
 
-  button:first-child {
-    margin-top: -0.7rem;
+  &.passwordButtons {
+    button:first-child {
+      margin-top: -0.7rem;
 
-    @media screen and (max-width: 988px) {
-      margin-top: 1.2rem;
+      @media screen and (max-width: 988px) {
+        margin-top: 1.2rem;
+      }
     }
   }
 `;

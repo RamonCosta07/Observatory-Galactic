@@ -1,4 +1,4 @@
-'use cliente';
+"use cliente";
 // Styles
 import * as S from "@/styles/ProfileSetupStyles";
 import { Button } from "@/styles/ButtonStyles";
@@ -36,6 +36,7 @@ import { FiEdit, FiX } from "react-icons/fi";
 import { AiFillLock } from "react-icons/ai";
 // Components
 import Error from "./Error";
+import Success from "./Success";
 import PasswordRecoveryModal from "./PasswordRecoveryModal";
 // Interfaces
 import { IOpenMenuProfile } from "@/interfaces/iComponents/IProfile";
@@ -49,6 +50,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
   const nameRegex = /^[a-zA-Z\s]+$/;
   const [email, setEmail] = useState(user?.email ? user.email : "");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const userCredential = auth.currentUser;
   const [passwordBox, setPasswordBox] = useState({
     currentPassword: "",
@@ -128,10 +130,16 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
         name,
       }));
       await updateProfile(userCredential!, { displayName: formattedName });
+      setSuccess("Nome atualizado com sucesso");
+      setTimeout(() => {
+        setSuccess("");
+      }, 1500);
     } catch (error) {
       console.error("Erro ao atualizar o nome do usuário:", error);
     } finally {
-      setIsEditingName(false);
+      setTimeout(() => {
+        setIsEditingName(false);
+      }, 1500);
     }
   };
 
@@ -164,7 +172,11 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
     await updateEmail(auth.currentUser!, email!);
     const userRef = doc(db, "users", user!.uid);
     await updateDoc(userRef, { email });
-    setIsEditingEmail(false);
+    setSuccess("E-mail atualizado com sucesso");
+    setTimeout(() => {
+      setSuccess("");
+      setIsEditingEmail(false);
+    }, 1500);
   };
 
   const handlePasswordSaveClick = async () => {
@@ -228,7 +240,7 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
         setError("Senha incorreta, favor digite a senha correta da sua conta");
         return;
       }
-
+      setSuccess("Senha atualizada com sucesso");
       handlePasswordCancelClick();
     } catch (error) {
       setError(
@@ -256,7 +268,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
       confirmPassword: "",
     });
     setError("");
-    setIsEditingPassword(false);
+    if (success) {
+      setTimeout(() => {
+        setSuccess("");
+        setIsEditingPassword(false);
+      }, 1500);
+    } else {
+      setIsEditingPassword(false);
+    }
   };
 
   const handleOpenModal = () => {
@@ -278,12 +297,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
               <S.EditContainer>
                 <S.HeaderContainerEdit>
                   <h2>Editar Nome</h2>
-                  <S.CancelButton
-                    title="Cancelar edição"
-                    onClick={handleNameCancelClick}
-                  >
-                    <FiX />
-                  </S.CancelButton>
+                  {!success && (
+                    <S.CancelButton
+                      title="Cancelar edição"
+                      onClick={handleNameCancelClick}
+                    >
+                      <FiX />
+                    </S.CancelButton>
+                  )}
                 </S.HeaderContainerEdit>
                 <S.EditInput
                   ref={inputRef}
@@ -295,12 +316,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
                   }}
                 />
                 <S.Send>
-                  <Button
-                    onClick={handleNameSaveClick}
-                    title="Salvar alterações"
-                  >
-                    Salvar
-                  </Button>
+                  {!success && (
+                    <Button
+                      onClick={handleNameSaveClick}
+                      title="Salvar alterações"
+                    >
+                      Salvar
+                    </Button>
+                  )}
                 </S.Send>
               </S.EditContainer>
             ) : (
@@ -320,12 +343,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
               <S.EditContainer>
                 <S.HeaderContainerEdit>
                   <h2>Editar E-mail</h2>
-                  <S.CancelButton
-                    title="Cancelar edição"
-                    onClick={handleEmailCancelClick}
-                  >
-                    <FiX />
-                  </S.CancelButton>
+                  {!success && (
+                    <S.CancelButton
+                      title="Cancelar edição"
+                      onClick={handleEmailCancelClick}
+                    >
+                      <FiX />
+                    </S.CancelButton>
+                  )}
                 </S.HeaderContainerEdit>
                 <S.EditInput
                   ref={inputRef}
@@ -337,12 +362,14 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
                   }}
                 />
                 <S.Send>
-                  <Button
-                    onClick={handleEmailSaveClick}
-                    title="Salvar alterações"
-                  >
-                    Salvar
-                  </Button>
+                  {!success && (
+                    <Button
+                      onClick={handleEmailSaveClick}
+                      title="Salvar alterações"
+                    >
+                      Salvar
+                    </Button>
+                  )}
                 </S.Send>
               </S.EditContainer>
             ) : (
@@ -362,118 +389,129 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
           <S.UserData>
             {isEditingPassword ? (
               <>
-              <S.EditContainer>
-                <S.HeaderContainerEdit>
-                  <h2>Senha Atual</h2>
-                  <S.CancelButton
-                    title="Cancelar edição"
-                    onClick={handlePasswordCancelClick}
-                  >
-                    <FiX />
-                  </S.CancelButton>
-                </S.HeaderContainerEdit>
-
-                <InputWrapper>
-                  <S.EditInput
-                    ref={inputRef}
-                    type={showPassword ? "text" : "password"}
-                    value={passwordBox.currentPassword}
-                    onChange={(e) => {
-                      setPasswordBox((prevPasswordBox) => ({
-                        ...prevPasswordBox,
-                        currentPassword: e.target.value,
-                      }));
-                      setError("");
-                    }}
-                  />
-                  <IconsWrapper>
-                    {showPassword ? (
-                      <HidePasswordIcon
-                        onClick={handleTogglePassword}
-                        title="Ocultar senha"
-                      />
-                    ) : (
-                      <ShowPasswordIcon
-                        onClick={handleTogglePassword}
-                        title="Exibir senha"
-                      />
+                <S.EditContainer>
+                  <S.HeaderContainerEdit>
+                    <h2>Senha Atual</h2>
+                    {!success && (
+                      <S.CancelButton
+                        title="Cancelar edição"
+                        onClick={handlePasswordCancelClick}
+                      >
+                        <FiX />
+                      </S.CancelButton>
                     )}
-                  </IconsWrapper>
-                </InputWrapper>
+                  </S.HeaderContainerEdit>
 
-                <h2>Nova Senha</h2>
-                <InputWrapper>
-                  <S.EditInput
-                    type={showConfirmPassword ? "text" : "password"}
-                    value={passwordBox.newPassword}
-                    onChange={(e) => {
-                      setPasswordBox((prevPasswordBox) => ({
-                        ...prevPasswordBox,
-                        newPassword: e.target.value,
-                      }));
-                      setError("");
-                    }}
-                  />
-                  <IconsWrapper>
-                    {showConfirmPassword ? (
-                      <HidePasswordIcon
-                        onClick={handleToggleConfirmPassword}
-                        title="Ocultar senha"
-                      />
-                    ) : (
-                      <ShowPasswordIcon
-                        onClick={handleToggleConfirmPassword}
-                        title="Exibir senha"
-                      />
+                  <InputWrapper>
+                    <S.EditInput
+                      ref={inputRef}
+                      type={showPassword ? "text" : "password"}
+                      value={passwordBox.currentPassword}
+                      onChange={(e) => {
+                        setPasswordBox((prevPasswordBox) => ({
+                          ...prevPasswordBox,
+                          currentPassword: e.target.value,
+                        }));
+                        setError("");
+                      }}
+                    />
+                    <IconsWrapper>
+                      {showPassword ? (
+                        <HidePasswordIcon
+                          onClick={handleTogglePassword}
+                          title="Ocultar senha"
+                        />
+                      ) : (
+                        <ShowPasswordIcon
+                          onClick={handleTogglePassword}
+                          title="Exibir senha"
+                        />
+                      )}
+                    </IconsWrapper>
+                  </InputWrapper>
+
+                  <h2>Nova Senha</h2>
+                  <InputWrapper>
+                    <S.EditInput
+                      type={showConfirmPassword ? "text" : "password"}
+                      value={passwordBox.newPassword}
+                      onChange={(e) => {
+                        setPasswordBox((prevPasswordBox) => ({
+                          ...prevPasswordBox,
+                          newPassword: e.target.value,
+                        }));
+                        setError("");
+                      }}
+                    />
+                    <IconsWrapper>
+                      {showConfirmPassword ? (
+                        <HidePasswordIcon
+                          onClick={handleToggleConfirmPassword}
+                          title="Ocultar senha"
+                        />
+                      ) : (
+                        <ShowPasswordIcon
+                          onClick={handleToggleConfirmPassword}
+                          title="Exibir senha"
+                        />
+                      )}
+                    </IconsWrapper>
+                  </InputWrapper>
+
+                  <h2>Confirme a Nova Senha</h2>
+                  <InputWrapper>
+                    <S.EditInput
+                      type={showConfirmPassword ? "text" : "password"}
+                      value={passwordBox.confirmPassword}
+                      onChange={(e) => {
+                        setPasswordBox((prevPasswordBox) => ({
+                          ...prevPasswordBox,
+                          confirmPassword: e.target.value,
+                        }));
+                        setError("");
+                      }}
+                    />
+                    <IconsWrapper>
+                      {showConfirmPassword ? (
+                        <HidePasswordIcon
+                          onClick={handleToggleConfirmPassword}
+                          title="Ocultar senha"
+                        />
+                      ) : (
+                        <ShowPasswordIcon
+                          onClick={handleToggleConfirmPassword}
+                          title="Exibir senha"
+                        />
+                      )}
+                    </IconsWrapper>
+                  </InputWrapper>
+
+                  <S.Send className="passwordButtons">
+                    {!success && (
+                      <>
+                        <ButtonModal
+                          onClick={handleOpenModal}
+                          title="Recuperar senha"
+                        >
+                          Esqueceu a senha?
+                        </ButtonModal>
+                        <Button
+                          onClick={handlePasswordSaveClick}
+                          title="Salvar alterações"
+                        >
+                          Salvar
+                        </Button>
+                      </>
                     )}
-                  </IconsWrapper>
-                </InputWrapper>
-
-                <h2>Confirme a Nova Senha</h2>
-                <InputWrapper>
-                  <S.EditInput
-                    type={showConfirmPassword ? "text" : "password"}
-                    value={passwordBox.confirmPassword}
-                    onChange={(e) => {
-                      setPasswordBox((prevPasswordBox) => ({
-                        ...prevPasswordBox,
-                        confirmPassword: e.target.value,
-                      }));
-                      setError("");
-                    }}
-                  />
-                  <IconsWrapper>
-                    {showConfirmPassword ? (
-                      <HidePasswordIcon
-                        onClick={handleToggleConfirmPassword}
-                        title="Ocultar senha"
-                      />
-                    ) : (
-                      <ShowPasswordIcon
-                        onClick={handleToggleConfirmPassword}
-                        title="Exibir senha"
-                      />
-                    )}
-                  </IconsWrapper>
-                </InputWrapper>
-
-                <S.Send>
-                <ButtonModal onClick={handleOpenModal} title="Recuperar senha">Esqueceu a senha?</ButtonModal>
-                  <Button
-                    onClick={handlePasswordSaveClick}
-                    title="Salvar alterações"
-                  >
-                    Salvar
-                  </Button>
-                </S.Send>
-              </S.EditContainer>
-              {showModal && <PasswordRecoveryModal onClose={handleCloseModal} />}
+                  </S.Send>
+                </S.EditContainer>
+                {showModal && (
+                  <PasswordRecoveryModal onClose={handleCloseModal} />
+                )}
               </>
             ) : (
               <S.UserInformation>
-                <span
-                  style={{ cursor: "not-allowed" }}
-                >
+                <span style={{ cursor: "not-allowed" }}>
                   Senha:
                   <AiFillLock style={{ marginLeft: ".6rem" }} />
                   <AiFillLock />
@@ -493,7 +531,11 @@ const ProfileSetup = ({ setIsMenuOpen }: IOpenMenuProfile) => {
             )}
           </S.UserData>
         </S.UserInfo>
+
         <S.ErrorContainer>{error && <Error>{error}</Error>}</S.ErrorContainer>
+        <S.ErrorContainer>
+          {success && <Success>{success}</Success>}
+        </S.ErrorContainer>
       </S.Container>
     </S.ConfigContainer>
   );

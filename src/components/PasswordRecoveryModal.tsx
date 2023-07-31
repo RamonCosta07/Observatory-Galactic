@@ -1,4 +1,4 @@
-'use cliente';
+"use cliente";
 // Styles
 import * as S from "@/styles/PasswordRecoveryModalStyles";
 // Hooks
@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import emailValidator from "email-validator";
 // Components
 import Error from "./Error";
+import Success from "./Success";
 import Loading from "./Loading";
 // Firebase
 import { auth, db } from "@/services/firebase";
@@ -19,6 +20,7 @@ const PasswordRecoveryModal = ({ onClose }: IPasswordRecoveryModal) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorRecovery, setErrorRecovery] = useState("");
+  const [successRecovery, setSuccessRecovery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -72,13 +74,14 @@ const PasswordRecoveryModal = ({ onClose }: IPasswordRecoveryModal) => {
       await sendPasswordResetEmail(auth, email);
 
       // Mensagem de sucesso
-      console.log(
-        "Solicitação para recuperar senha enviada com o e-mail:",
-        email
-      );
-
       setLoading(false);
-      onClose();
+      setSuccessRecovery(
+        `Solicitação para recuperar senha enviada com o e-mail: ${email}`
+      );
+      setTimeout(() => {
+        setSuccessRecovery("");
+        onClose();
+      }, 3500);
     } catch (error) {
       setErrorRecovery(
         "Erro ao enviar o e-mail de recuperação de senha. Tente novamente mais tarde"
@@ -100,19 +103,27 @@ const PasswordRecoveryModal = ({ onClose }: IPasswordRecoveryModal) => {
           onChange={handleInputChange}
         />
         {errorRecovery && <Error>{errorRecovery}</Error>}
+        {successRecovery && <Success>{successRecovery}</Success>}
         {loading ? (
           <Loading />
         ) : (
           <>
-            <S.Button
-              onClick={handleRecoverPassword}
-              title="Enviar e-mail de recuperação de senha"
-            >
-              Recuperar Senha
-            </S.Button>
-            <S.Button onClick={onClose} title="Cancelar recuperação de senha">
-              Fechar
-            </S.Button>
+            {!successRecovery && (
+              <>
+                <S.Button
+                  onClick={handleRecoverPassword}
+                  title="Enviar e-mail de recuperação de senha"
+                >
+                  Recuperar Senha
+                </S.Button>
+                <S.Button
+                  onClick={onClose}
+                  title="Cancelar recuperação de senha"
+                >
+                  Fechar
+                </S.Button>
+              </>
+            )}
           </>
         )}
       </S.ModalContent>

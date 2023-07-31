@@ -120,14 +120,6 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
     return <div>{<Error>{error}</Error>}</div>;
   }
 
-  if (!apodData) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
-  }
-
   return (
     <>
       <Head>
@@ -135,7 +127,7 @@ const Curiosities = ({ initialApodData }: ICuriositiesProps) => {
       </Head>
       <S.Container>
         <h1>Curiosidades Sobre o Universo</h1>
-        {loading ? (
+        {loading || !apodData ? (
           <S.LoadingContainer>
             <Loading />
           </S.LoadingContainer>

@@ -19,7 +19,7 @@ export function Home() {
 
     const timeout = setTimeout(() => {
       setShowHeader(false);
-    }, 3500);
+    }, 4000);
 
     return () => {
       clearTimeout(timeout);

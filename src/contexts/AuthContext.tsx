@@ -168,6 +168,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       Router.push("/perfil");
+    } catch (error: any) {
+      switch (error.code) {
+        case "auth/invalid-email":
+          setErrorSignin("E-mail inválido");
+          break;
+        case "auth/user-disabled":
+          setErrorSignin("Usuário desabilitado");
+          break;
+        case "auth/account-exists-with-different-credential":
+          setErrorSignin(
+            "E-mail vinculado a essa conta já foi cadastrado utilizando outro serviço de provedor"
+          );
+          break;
+        case "auth/user-not-found":
+          setErrorSignin("Usuário não encontrado");
+          break;
+        case "auth/wrong-password":
+          setErrorSignin("Senha incorreta");
+          break;
+        default:
+          setErrorSignin(
+            "Erro ao fazer login, por favor tente novamente mais tarde"
+          );
+          break;
+      }
     } finally {
       setLoading(false);
     }
@@ -198,6 +223,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       Router.push("/perfil");
+    } catch (error: any) {
+      switch (error.code) {
+        case "auth/invalid-email":
+          setErrorSignin("E-mail inválido");
+          break;
+        case "auth/user-disabled":
+          setErrorSignin("Usuário desabilitado");
+          break;
+        case "auth/user-not-found":
+          setErrorSignin("Usuário não encontrado");
+          break;
+        case "auth/account-exists-with-different-credential":
+          setErrorSignin(
+            "E-mail vinculado a essa conta já foi cadastrado utilizando outro serviço de provedor"
+          );
+          break;
+        case "auth/wrong-password":
+          setErrorSignin("Senha incorreta");
+          break;
+        default:
+          setErrorSignin(
+            "Erro ao fazer login, por favor tente novamente mais tarde"
+          );
+          break;
+      }
     } finally {
       setLoading(false);
     }
@@ -226,6 +276,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       }
       Router.push("/perfil");
+    } catch (error: any) {
+      console.log(error.code);
+      switch (error.code) {
+        case "auth/invalid-email":
+          setErrorSignin("E-mail inválido");
+          break;
+        case "auth/user-disabled":
+          setErrorSignin("Usuário desabilitado");
+          break;
+        case "auth/account-exists-with-different-credential":
+          setErrorSignin(
+            "E-mail vinculado a essa conta já foi cadastrado utilizando outro serviço de provedor"
+          );
+          break;
+        case "auth/user-not-found":
+          setErrorSignin("Usuário não encontrado");
+          break;
+        case "auth/wrong-password":
+          setErrorSignin("Senha incorreta");
+          break;
+        default:
+          setErrorSignin(
+            "Erro ao fazer login, por favor tente novamente mais tarde"
+          );
+          break;
+      }
     } finally {
       setLoading(false);
     }

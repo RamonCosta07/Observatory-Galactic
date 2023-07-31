@@ -57,13 +57,13 @@ export const HomeContainer = styled.div`
 
     @media screen and (max-width: 375px) {
       top: 90px;
-      margin-left: 8px;
+      margin-left: 5px;
       font-size: 19px;
     }
 
     @media screen and (max-width: 360px) {
       top: 120px;
-      margin-left: 0px;
+      margin-left: 5px;
       margin: 0 auto;
       font-size: 17.5px;
     }

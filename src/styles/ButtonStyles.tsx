@@ -31,11 +31,11 @@ export const Button = styled.button`
   }
 
   @media screen and (max-width: 1200px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   @media screen and (max-width: 998px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media screen and (max-width: 768px) {
@@ -45,11 +45,10 @@ export const Button = styled.button`
 
   @media screen and (max-width: 600px) {
     padding: 6px 14px;
-    font-size: 10px;
   }
 
   @media screen and (max-width: 500px) {
-    padding: 4px 12px;
-    font-size: 10px;
+    padding: 8px 12px;
+    font-size: 11px;
   }
 `;
